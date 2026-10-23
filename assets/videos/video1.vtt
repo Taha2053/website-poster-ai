@@ -1,0 +1,10 @@
+WEBVTT - Combinatorial Explosion in Reasoning Search
+
+00:00.000 --> 00:20.000
+When an AI explores possible choices, every decision branches into multiple next steps. In game playing, puzzle solving, and theorem proving, this branching creates a rapidly expanding tree of possibilities.
+
+00:20.000 --> 00:45.000
+Mathematically, the total number of states visited scales exponentially as b raised to the power of d, written as O(b^d). Even with a modest branching factor of 3 and a depth of 20, the search space reaches over three billion distinct possibilities.
+
+00:45.000 --> 01:13.000
+This is known as the combinatorial explosion. To overcome this limitation, search algorithms employ heuristic evaluations to discard unpromising trajectories, reducing exponential search complexity to a tractable, focused path toward the goal.

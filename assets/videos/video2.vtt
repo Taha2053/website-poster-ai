@@ -1,0 +1,10 @@
+WEBVTT - Two Families of AI: Symbolic vs Sub-Symbolic
+
+00:00.000 --> 00:25.000
+Artificial intelligence research is anchored by two grand traditions: Symbolic AI and Sub-symbolic AI. Symbolic AI represents knowledge through explicit rules, logic, and symbols that are completely inspectable by human experts.
+
+00:25.000 --> 00:52.000
+Sub-symbolic AI, powering modern deep learning and neural networks, represents concepts as high-dimensional continuous vectors and distributed weights learned from massive datasets.
+
+00:52.000 --> 01:18.000
+MindEase bridges this gap for neurodivergent learners: using deep language models to understand context, while rendering explicit symbolic concept anchors, definitions, and mathematical structures in the student’s browser.

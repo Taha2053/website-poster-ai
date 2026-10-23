@@ -1525,6 +1525,67 @@ body {
   backdrop-filter: blur(4px);
 }
 
+.gallery-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.alt-visibility-tag {
+  display: none;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.alt-chip {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  display: inline-block;
+  margin-right: 0.35rem;
+  vertical-align: middle;
+}
+
+.image-alt-caption {
+  padding: 0.75rem 1rem;
+  background-color: var(--color-surface-sunken);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+.image-alt-caption .alt-summary {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* When Always Show Alt Text is active: */
+[data-show-alt="true"] .alt-visibility-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+[data-show-alt="true"] .image-alt-caption {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent-dark);
+  border-left: 4px solid var(--color-accent);
+  font-weight: 500;
+}
+
 .gallery-details {
   padding: 1.5rem;
   display: flex;

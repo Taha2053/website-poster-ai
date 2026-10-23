@@ -1,0 +1,10 @@
+WEBVTT - State Space Search & Heuristics
+
+00:00.000 --> 00:28.000
+State space search visualizes problem solving as pathfinding through a directed graph of possibilities. Every move is a transition between nodes.
+
+00:28.000 --> 00:58.000
+Heuristic evaluation functions, denoted h(n), estimate remaining distance to the goal. When a heuristic is admissible, A* search guarantees finding the optimal path while exploring minimal states.
+
+00:58.000 --> 01:25.000
+MindEase turns these mathematical search trees into visual diagrams, removing symbolic parsing friction for visual and neurodivergent learners.

@@ -88,6 +88,13 @@
           <span class="btn-text">Reading Ruler</span>
         </button>
       </div>
+      <!-- Visible Alt Text / Captions Toggle -->
+      <div class="a11y-group">
+        <button type="button" class="a11y-btn toggle-btn" id="btn-toggle-alt" aria-pressed="false" title="Toggle visible image alt-text and detailed visual descriptions (Alt+T)">
+          <span class="icon" aria-hidden="true">🏷️</span>
+          <span class="btn-text">Image Alt-Text</span>
+        </button>
+      </div>
 
       <!-- Speech Narration Reader -->
       <div class="a11y-group audio-controls-group" role="group" aria-label="Speech Narration">
@@ -133,7 +140,7 @@
   <header class="site-header" role="banner">
     <div class="header-inner">
       <div class="brand">
-        <img src="assets/images/logo.png" alt="MindEase Logo" class="brand-logo" width="48" height="48">
+        <img src="assets/images/logo.png" alt="MindEase project logo: Stylized profile of a human head with radiant neural connections, symbolizing cognitive augmentation and neuro-inclusive learning" class="brand-logo" width="48" height="48">
         <div class="brand-text">
           <span class="brand-title">MindEase</span>
           <span class="brand-subtitle">The AI Learning Layer That Adapts To Every Brain</span>
@@ -233,7 +240,7 @@
               </div>
               <div class="preview-chunk">
                 <p class="chunk-p">
-                  <strong>Semantic Chunk 1:</strong> In state-space search, each additional decision step multiplies the branching factor <span class="formula-tag">$\mathcal{O}(b^d)$</span>, rapidly exhausting working memory.
+                  <strong>Semantic Chunk 1:</strong> In state-space search, each additional decision step multiplies the branching factor <span class="formula-tag" role="math" aria-label="Big-O of b raised to the power of d, where b is branching factor and d is depth to the goal state"><span class="sr-only">Big O of b to the power of d: </span><span aria-hidden="true">$\mathcal{O}(b^d)$</span></span>, rapidly exhausting working memory.
                 </p>
                 <div class="preview-action-callout">
                   <span class="callout-icon" aria-hidden="true">💡</span>
@@ -573,7 +580,8 @@
                       If an algorithm searches every branch blindly, the computational workload multiplies exponentially:
                     </p>
                     <div class="katex-formula-block" role="region" aria-label="Search complexity formula: Big O of b to the power of d">
-                      <span class="math-rendered" data-math="\mathcal{O}(b^d)">$\mathcal{O}(b^d)$</span>
+                      <span class="sr-only">Mathematical Formula: Big-O notation of b raised to the power of d, where b represents the branching factor of the search tree and d represents the search depth to the goal.</span>
+                      <span class="math-rendered" data-math="\mathcal{O}(b^d)" aria-hidden="true">$\mathcal{O}(b^d)$</span>
                       <span class="math-explanation">Where $b$ = choices per step (branching factor), $d$ = steps to reach the goal (depth).</span>
                     </div>
                     <div class="chunk-takeaway">
@@ -605,8 +613,10 @@
                         <span class="diagram-icon" aria-hidden="true">📊</span>
                         <span>Napkin AI Generated Concept Diagram</span>
                       </div>
-                      <div class="diagram-illustration" aria-label="Visual tree search diagram showing pruning of branches">
-                        <svg class="tree-svg" viewBox="0 0 400 120" role="img" aria-label="Search tree diagram showing root node branching into evaluated nodes with bad branches pruned">
+                      <div class="diagram-illustration">
+                        <svg class="tree-svg" viewBox="0 0 400 120" role="img" aria-labelledby="tree-svg-title tree-svg-desc">
+                          <title id="tree-svg-title">Heuristic Search Tree Pruning Diagram</title>
+                          <desc id="tree-svg-desc">Visual tree graph showing an initial start node branching into three paths. The left and right paths have unfavorable heuristic scores and are marked pruned with red crosses. The central path with heuristic score h(n)=2 is highlighted in green and leads directly to the Goal State.</desc>
                           <circle cx="200" cy="20" r="14" class="node-root" fill="var(--color-accent)" />
                           <text x="200" y="24" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">Start</text>
                           <!-- Left branch -->
@@ -626,6 +636,9 @@
                           <rect x="175" y="105" width="50" height="15" rx="3" fill="var(--color-accent)" />
                           <text x="200" y="116" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">Goal State</text>
                         </svg>
+                        <div class="sr-only" id="tree-text-alt">
+                          Text Alternative for Tree Diagram: From the Start root node, three branches diverge. The left and right paths fail admissibility and are pruned. The center path evaluates to h(n)=2 and proceeds directly to Goal State.
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -668,10 +681,17 @@
         <div class="gallery-grid">
           <!-- Card 1: In-situ Wikipedia Overlay -->
           <article class="gallery-card" tabindex="0">
-            <div class="gallery-img-wrap">
-              <img src="assets/images/1.png" alt="MindEase browser extension active on a Wikipedia page about Artificial Intelligence, displaying a clean sidebar with real-time concept definitions and breakdowns." class="gallery-img" loading="lazy">
-              <div class="gallery-overlay-badge">In-Situ Reading</div>
-            </div>
+            <figure class="gallery-figure">
+              <div class="gallery-img-wrap">
+                <img id="gallery-img-1" src="assets/images/1.png" alt="Firefox browser displaying Wikipedia's Artificial Intelligence entry with MindEase companion sidebar on the right presenting highlighted concepts, interactive definitions, and structured explanation blocks." class="gallery-img" loading="lazy" aria-describedby="desc-img-1">
+                <div class="gallery-overlay-badge">In-Situ Reading</div>
+                <div class="alt-visibility-tag"><span class="alt-chip" aria-hidden="true">ALT</span> Visual Description</div>
+              </div>
+              <figcaption class="image-alt-caption" id="desc-img-1">
+                <span class="alt-chip" aria-hidden="true">ALT TEXT</span>
+                <span class="alt-summary">Firefox window showing Wikipedia's Artificial Intelligence entry with MindEase companion sidebar on the right displaying concept breakdowns, interactive definitions, and real-life examples without altering the original article.</span>
+              </figcaption>
+            </figure>
             <div class="gallery-details">
               <h3 class="gallery-card-title">1. Real-Time In-Situ Reading Companion</h3>
               <p class="gallery-card-desc">
@@ -679,7 +699,7 @@
               </p>
               <div class="a11y-transcript-details">
                 <details>
-                  <summary class="transcript-toggle">Detailed Assistive Description</summary>
+                  <summary class="transcript-toggle">Detailed Technical Visual Breakdown</summary>
                   <p class="transcript-content">
                     The screenshot captures a Firefox browser window showing Wikipedia’s Artificial Intelligence entry. On the right side, the MindEase companion panel floats cleanly, displaying a title “What is Artificial Intelligence?”, highlighted interactive definitions, real-life examples of AI, and simplified explanation blocks that break down the dense opening paragraph into digestible cognitive units.
                   </p>
@@ -690,10 +710,17 @@
 
           <!-- Card 2: The Learning Puzzle -->
           <article class="gallery-card" tabindex="0">
-            <div class="gallery-img-wrap">
-              <img src="assets/images/8.png" alt="MindEase Learning Puzzle interface showing customizable cognitive preference pieces: Visual explanations, Short session length, Slower pace, Concise detail, and Support tags for Dyslexia and Concept Anchors." class="gallery-img" loading="lazy">
-              <div class="gallery-overlay-badge">Learner Agency</div>
-            </div>
+            <figure class="gallery-figure">
+              <div class="gallery-img-wrap">
+                <img id="gallery-img-2" src="assets/images/8.png" alt="MindEase Learning Puzzle interface showing customizable cognitive preference pieces: Visual explanations, Short session length, Slower pace, Concise detail, and Support tags for Dyslexia and Concept Anchors." class="gallery-img" loading="lazy" aria-describedby="desc-img-2">
+                <div class="gallery-overlay-badge">Learner Agency</div>
+                <div class="alt-visibility-tag"><span class="alt-chip" aria-hidden="true">ALT</span> Visual Description</div>
+              </div>
+              <figcaption class="image-alt-caption" id="desc-img-2">
+                <span class="alt-chip" aria-hidden="true">ALT TEXT</span>
+                <span class="alt-summary">MindEase Learning Profile workspace displaying interactive puzzle piece controls for Format, Session Length, Reading Pace, and active support tags for Dyslexia, English support, and Concept Anchors.</span>
+              </figcaption>
+            </figure>
             <div class="gallery-details">
               <h3 class="gallery-card-title">2. "My Learning Puzzle" Profile</h3>
               <p class="gallery-card-desc">
@@ -701,7 +728,7 @@
               </p>
               <div class="a11y-transcript-details">
                 <details>
-                  <summary class="transcript-toggle">Detailed Assistive Description</summary>
+                  <summary class="transcript-toggle">Detailed Technical Visual Breakdown</summary>
                   <p class="transcript-content">
                     The screenshot displays the MindEase Learning Profile workspace. At the top, six interactive puzzle piece controls are active: Format (Visual explanations), Session length (Short), Reading pace (Slower), Detail (Concise), Explanation order (Examples first). Active support tags include “Concept anchors”, “English language support”, and “DYSLEXIA support”. Below, a transparent explanation states: “Why MindEase adapted this content: preference-based suggestion, not a diagnosis or proof that one format improves comprehension.”
                   </p>
@@ -712,10 +739,17 @@
 
           <!-- Card 3: Session Dashboard & Focus Visualization -->
           <article class="gallery-card" tabindex="0">
-            <div class="gallery-img-wrap">
-              <img src="assets/images/5.png" alt="MindEase Session Dashboard displaying session duration, resources used, concepts explored, notes captured, and an active focus visualization graph." class="gallery-img" loading="lazy">
-              <div class="gallery-overlay-badge">Synthesis</div>
-            </div>
+            <figure class="gallery-figure">
+              <div class="gallery-img-wrap">
+                <img id="gallery-img-3" src="assets/images/5.png" alt="MindEase Session Dashboard displaying session duration, resources used, concepts explored, notes captured, and an active focus visualization graph." class="gallery-img" loading="lazy" aria-describedby="desc-img-3">
+                <div class="gallery-overlay-badge">Synthesis</div>
+                <div class="alt-visibility-tag"><span class="alt-chip" aria-hidden="true">ALT</span> Visual Description</div>
+              </div>
+              <figcaption class="image-alt-caption" id="desc-img-3">
+                <span class="alt-chip" aria-hidden="true">ALT TEXT</span>
+                <span class="alt-summary">Post-session Dashboard showing analytical metrics including Duration, Resources Used, Concepts Explored, Notes Captured, and Focus Score alongside a focus visualization timeline.</span>
+              </figcaption>
+            </figure>
             <div class="gallery-details">
               <h3 class="gallery-card-title">3. Post-Session Review &amp; Knowledge Gaps</h3>
               <p class="gallery-card-desc">
@@ -723,7 +757,7 @@
               </p>
               <div class="a11y-transcript-details">
                 <details>
-                  <summary class="transcript-toggle">Detailed Assistive Description</summary>
+                  <summary class="transcript-toggle">Detailed Technical Visual Breakdown</summary>
                   <p class="transcript-content">
                     The screenshot shows the MindEase Dashboard with top navigation tabs: Today, Learning history, Review library, My learning puzzle, Video studio, and Account & data. Under “Your learning session”, key metrics report Duration, Resources Used, Concepts Explored, Notes Captured, and Focus Score. A dedicated “Focus Visualization” timeline illustrates engaged versus passive reading intervals.
                   </p>
@@ -734,10 +768,17 @@
 
           <!-- Card 4: Video Studio & Manim Animations -->
           <article class="gallery-card" tabindex="0">
-            <div class="gallery-img-wrap">
-              <img src="assets/images/13.png" alt="MindEase Video Studio showing generated Manim animations for Combinatorial Explosion, Symbolic AI, Markov Decision Process, and Transformers with Attention." class="gallery-img" loading="lazy">
-              <div class="gallery-overlay-badge">Multimodal Studio</div>
-            </div>
+            <figure class="gallery-figure">
+              <div class="gallery-img-wrap">
+                <img id="gallery-img-4" src="assets/images/13.png" alt="MindEase Video Studio displaying completed Manim mathematical video explanations for Combinatorial Explosion, Symbolic AI, Markov Decision Process, and Transformers with Attention." class="gallery-img" loading="lazy" aria-describedby="desc-img-4">
+                <div class="gallery-overlay-badge">Multimodal Studio</div>
+                <div class="alt-visibility-tag"><span class="alt-chip" aria-hidden="true">ALT</span> Visual Description</div>
+              </div>
+              <figcaption class="image-alt-caption" id="desc-img-4">
+                <span class="alt-chip" aria-hidden="true">ALT TEXT</span>
+                <span class="alt-summary">Video Studio dashboard displaying a gallery of rendered mathematical animations ready for viewing and MP4 download, including topics in search complexity, logic, and neural attention.</span>
+              </figcaption>
+            </figure>
             <div class="gallery-details">
               <h3 class="gallery-card-title">4. Grounded Manim Video Studio</h3>
               <p class="gallery-card-desc">
@@ -745,7 +786,7 @@
               </p>
               <div class="a11y-transcript-details">
                 <details>
-                  <summary class="transcript-toggle">Detailed Assistive Description</summary>
+                  <summary class="transcript-toggle">Detailed Technical Visual Breakdown</summary>
                   <p class="transcript-content">
                     The screenshot captures the Video Studio route. It lists generated video explanations ready for playback and MP4 download, including “Combinatorial explosion in reasoning search”, “Symbolic vs. Sub-symbolic”, “Markov Decision Process”, “Transformer with Attention”, and “State Space Search”. Each card shows completion status, thumbnail preview, and direct download links.
                   </p>
@@ -756,10 +797,17 @@
 
           <!-- Card 5: Privacy Sovereignty & Local Storage -->
           <article class="gallery-card" tabindex="0">
-            <div class="gallery-img-wrap">
-              <img src="assets/images/10.png" alt="MindEase Account and Data view emphasizing local-first privacy where profile and session data stay in the browser, with optional export and deletion." class="gallery-img" loading="lazy">
-              <div class="gallery-overlay-badge">Privacy First</div>
-            </div>
+            <figure class="gallery-figure">
+              <div class="gallery-img-wrap">
+                <img id="gallery-img-5" src="assets/images/10.png" alt="MindEase Account and Data interface highlighting that profile and session data stay locally in the browser, with one-click export and deletion buttons." class="gallery-img" loading="lazy" aria-describedby="desc-img-5">
+                <div class="gallery-overlay-badge">Privacy First</div>
+                <div class="alt-visibility-tag"><span class="alt-chip" aria-hidden="true">ALT</span> Visual Description</div>
+              </div>
+              <figcaption class="image-alt-caption" id="desc-img-5">
+                <span class="alt-chip" aria-hidden="true">ALT TEXT</span>
+                <span class="alt-summary">Data Sovereignty view showing local-first privacy settings: Local mode works without an account, student data remains in browser IndexedDB, with Export learner data and Delete learner data controls.</span>
+              </figcaption>
+            </figure>
             <div class="gallery-details">
               <h3 class="gallery-card-title">5. Data Sovereignty &amp; Local-First Storage</h3>
               <p class="gallery-card-desc">
@@ -767,7 +815,7 @@
               </p>
               <div class="a11y-transcript-details">
                 <details>
-                  <summary class="transcript-toggle">Detailed Assistive Description</summary>
+                  <summary class="transcript-toggle">Detailed Technical Visual Breakdown</summary>
                   <p class="transcript-content">
                     The screenshot presents the Account & Data settings. Prominent text assures the learner: “Profile and session data currently stay in this browser. Local mode works without an account. Sign in only if you want synchronization across devices.” Action buttons allow learners to “Export learner data” as JSON or “Delete learner data” completely with a single click.
                   </p>
@@ -778,10 +826,17 @@
 
           <!-- Card 6: Reading Mode Comparison -->
           <article class="gallery-card" tabindex="0">
-            <div class="gallery-img-wrap">
-              <img src="assets/images/3.png" alt="MindEase in-situ Wikipedia reading mode showing contextual table of real-life AI examples and real-time concept definitions side-by-side with Wikipedia text." class="gallery-img" loading="lazy">
-              <div class="gallery-overlay-badge">Dual-Modality</div>
-            </div>
+            <figure class="gallery-figure">
+              <div class="gallery-img-wrap">
+                <img id="gallery-img-6" src="assets/images/3.png" alt="MindEase in-situ reading view displaying real-life AI examples table side-by-side with Wikipedia's Artificial Intelligence article." class="gallery-img" loading="lazy" aria-describedby="desc-img-6">
+                <div class="gallery-overlay-badge">Dual-Modality</div>
+                <div class="alt-visibility-tag"><span class="alt-chip" aria-hidden="true">ALT</span> Visual Description</div>
+              </div>
+              <figcaption class="image-alt-caption" id="desc-img-6">
+                <span class="alt-chip" aria-hidden="true">ALT TEXT</span>
+                <span class="alt-summary">Dual-modality reading view illustrating how abstract theoretical terms in Wikipedia are augmented with concrete tabular examples mapping familiar tools to core algorithms.</span>
+              </figcaption>
+            </figure>
             <div class="gallery-details">
               <h3 class="gallery-card-title">6. Contextual Concept Anchors &amp; Tables</h3>
               <p class="gallery-card-desc">
@@ -789,7 +844,7 @@
               </p>
               <div class="a11y-transcript-details">
                 <details>
-                  <summary class="transcript-toggle">Detailed Assistive Description</summary>
+                  <summary class="transcript-toggle">Detailed Technical Visual Breakdown</summary>
                   <p class="transcript-content">
                     The screenshot shows Wikipedia text alongside a MindEase card titled “Real-life examples of AI”. It includes a two-column table mapping common tools (like Google Search, Face ID, and Voice Assistants) to their underlying AI concepts, helping learners anchor abstract computer science definitions to tangible experiences.
                   </p>
@@ -797,7 +852,6 @@
               </div>
             </div>
           </article>
-        </div>
       </div>
     </section>
 
@@ -853,8 +907,9 @@
           <!-- Video Stage -->
           <div id="video-player-panel" class="video-stage" role="tabpanel" aria-labelledby="tab-v1">
             <div class="video-screen-wrapper">
-              <video id="main-video" class="responsive-video" controls preload="metadata" playsinline poster="assets/images/13.png">
+              <video id="main-video" class="responsive-video" controls preload="metadata" playsinline poster="assets/images/13.png" aria-label="MindEase Educational Video Player: Combinatorial Explosion in Reasoning Search">
                 <source id="video-source" src="assets/videos/video1.mp4" type="video/mp4">
+                <track id="main-video-track" kind="captions" src="assets/videos/video1.vtt" srclang="en" label="English Captions" default>
                 Your browser does not support standard HTML5 video playback.
               </video>
             </div>
@@ -998,6 +1053,10 @@
               <span class="shortcut-desc">Toggle Interactive Reading Ruler</span>
             </div>
             <div class="shortcut-item">
+              <kbd class="key-cap">Alt</kbd> + <kbd class="key-cap">T</kbd>
+              <span class="shortcut-desc">Toggle Visible Image Alt Text &amp; Descriptions</span>
+            </div>
+            <div class="shortcut-item">
               <kbd class="key-cap">Alt</kbd> + <kbd class="key-cap">S</kbd>
               <span class="shortcut-desc">Play / Pause Spoken Audio Narrator</span>
             </div>
@@ -1077,6 +1136,10 @@
           <div class="setting-row toggle-row">
             <label for="modal-ruler-toggle">Reading Ruler (line-tracking guide):</label>
             <input type="checkbox" id="modal-ruler-toggle" class="a11y-checkbox">
+          </div>
+          <div class="setting-row toggle-row">
+            <label for="modal-alt-toggle">Visible Alt Text &amp; Visual Descriptions:</label>
+            <input type="checkbox" id="modal-alt-toggle" class="a11y-checkbox">
           </div>
           <div class="setting-row toggle-row">
             <label for="modal-motion-toggle">Disable All Animations (Reduced Motion):</label>

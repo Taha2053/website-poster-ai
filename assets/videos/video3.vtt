@@ -1,0 +1,10 @@
+WEBVTT - Markov Decision Process (MDP)
+
+00:00.000 --> 00:30.000
+Decision making under uncertainty is formalized as a Markov Decision Process, defined by states S, actions A, transition probabilities P, rewards R, and a discount factor gamma.
+
+00:30.000 --> 01:05.000
+The Markov property dictates that the future state depends solely on the current state and action, not the sequence of past states. The optimal value function satisfies the recursive Bellman Optimality Equation.
+
+01:05.000 --> 01:44.000
+MindEase’s Layer 2 Q-learning architecture adopts this foundational formulation: modeling learner behavioral signals into discrete states to compute cumulative engagement rewards.

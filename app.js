@@ -13,6 +13,7 @@
     font: localStorage.getItem('mindease-font') || 'standard',
     size: localStorage.getItem('mindease-size') || 'normal',
     spacing: localStorage.getItem('mindease-spacing') || 'normal',
+    showAltText: localStorage.getItem('mindease-show-alt') === 'true',
     reducedMotion: localStorage.getItem('mindease-reduced-motion') === 'true',
     rulerActive: false,
     rulerY: 200,
@@ -36,6 +37,7 @@
   const videoData = {
     'tab-v1': {
       src: 'assets/videos/video1.mp4',
+      vtt: 'assets/videos/video1.vtt',
       title: 'Combinatorial Explosion in Reasoning Search',
       topic: 'State Space & Search Complexity • Duration: 1m 13s',
       transcripts: [
@@ -46,6 +48,7 @@
     },
     'tab-v2': {
       src: 'assets/videos/video2.mp4',
+      vtt: 'assets/videos/video2.vtt',
       title: 'Two Families of AI: Symbolic vs Sub-Symbolic',
       topic: 'Logic, Rules & Neural Representations • Duration: 1m 18s',
       transcripts: [
@@ -56,6 +59,7 @@
     },
     'tab-v3': {
       src: 'assets/videos/video3.mp4',
+      vtt: 'assets/videos/video3.vtt',
       title: 'Markov Decision Process (MDP)',
       topic: 'Reinforcement Learning Dynamics • Duration: 1m 44s',
       transcripts: [
@@ -66,6 +70,7 @@
     },
     'tab-v4': {
       src: 'assets/videos/video4.mp4',
+      vtt: 'assets/videos/video4.vtt',
       title: 'From Language to Math: Transformer with Attention',
       topic: 'Self-Attention, Vectors & Dot Products • Duration: 2m 04s',
       transcripts: [
@@ -76,6 +81,7 @@
     },
     'tab-v5': {
       src: 'assets/videos/video5.mp4',
+      vtt: 'assets/videos/video5.vtt',
       title: 'State Space Search & Heuristics',
       topic: 'Graph Search & Pruning Strategies • Duration: 1m 25s',
       transcripts: [
@@ -86,6 +92,7 @@
     },
     'tab-onb': {
       src: 'assets/videos/onboarding_compressed.mp4',
+      vtt: 'assets/videos/onboarding.vtt',
       title: 'MindEase Onboarding Walkthrough',
       topic: 'Learner Setup & Cognitive Puzzle • Duration: 35s',
       transcripts: [
@@ -179,6 +186,25 @@
     }
 
     announce(state.rulerActive ? 'Reading ruler enabled. Moves with cursor or arrow keys.' : 'Reading ruler disabled.');
+  }
+
+  function toggleAltText(forceState) {
+    state.showAltText = forceState !== undefined ? forceState : !state.showAltText;
+    document.documentElement.dataset.showAlt = state.showAltText ? 'true' : 'false';
+    localStorage.setItem('mindease-show-alt', state.showAltText ? 'true' : 'false');
+
+    const btn = document.getElementById('btn-toggle-alt');
+    const chk = document.getElementById('modal-alt-toggle');
+
+    if (btn) {
+      btn.setAttribute('aria-pressed', state.showAltText ? 'true' : 'false');
+      btn.classList.toggle('active', state.showAltText);
+    }
+    if (chk) {
+      chk.checked = state.showAltText;
+    }
+
+    announce(state.showAltText ? 'Image alternative text and visual descriptions are now visible.' : 'Image alt text visibility minimized.');
   }
 
   function applyReducedMotion(isReduced) {
@@ -720,6 +746,11 @@
         if (mainVideo && videoSource) {
           mainVideo.pause();
           videoSource.src = data.src;
+          const track = document.getElementById('main-video-track');
+          if (track && data.vtt) {
+            track.src = data.vtt;
+          }
+          mainVideo.setAttribute('aria-label', `MindEase Educational Video Player: ${data.title}`);
           mainVideo.load();
         }
 
@@ -812,6 +843,7 @@
     const spacingSel = document.getElementById('modal-spacing-select');
     const rulerChk = document.getElementById('modal-ruler-toggle');
     const motionChk = document.getElementById('modal-motion-toggle');
+    const altChk = document.getElementById('modal-alt-toggle');
     const speedSel = document.getElementById('modal-speech-speed');
     const soundSel = document.getElementById('modal-soundscape-select');
 
@@ -824,6 +856,7 @@
       if (spacingSel) spacingSel.value = state.spacing;
       if (rulerChk) rulerChk.checked = state.rulerActive;
       if (motionChk) motionChk.checked = state.reducedMotion;
+      if (altChk) altChk.checked = state.showAltText;
       if (speedSel) speedSel.value = state.speechRate.toString();
       if (soundSel) soundSel.value = state.soundscapeActive ? state.soundscapeMode : 'off';
 
@@ -858,6 +891,7 @@
         if (sizeSel) applySize(sizeSel.value);
         if (spacingSel) applySpacing(spacingSel.value);
         if (rulerChk) toggleReadingRuler(rulerChk.checked);
+        if (altChk) toggleAltText(altChk.checked);
         if (motionChk) applyReducedMotion(motionChk.checked);
         if (speedSel) {
           state.speechRate = parseFloat(speedSel.value);
@@ -888,6 +922,7 @@
         applySpacing('normal');
         toggleReadingRuler(false);
         applyReducedMotion(false);
+        toggleAltText(false);
         stopSpeech();
         stopSoundscape();
         closeModal();
@@ -933,6 +968,11 @@
     if (e.altKey && (e.key === 'r' || e.key === 'R')) {
       e.preventDefault();
       toggleReadingRuler();
+    }
+    // Alt+T: Toggle Alt Text / Visual Descriptions
+    if (e.altKey && (e.key === 't' || e.key === 'T')) {
+      e.preventDefault();
+      toggleAltText();
     }
 
     // Alt+S: Toggle Speech
@@ -1012,6 +1052,11 @@
     if (rulerBtn) {
       rulerBtn.addEventListener('click', () => toggleReadingRuler());
     }
+    // Alt text toggle
+    const altBtn = document.getElementById('btn-toggle-alt');
+    if (altBtn) {
+      altBtn.addEventListener('click', () => toggleAltText());
+    }
   }
 
   // --- Initialization on DOM Ready ---
@@ -1022,6 +1067,7 @@
     applySize(state.size);
     applySpacing(state.spacing);
     if (state.reducedMotion) applyReducedMotion(true);
+    if (state.showAltText) toggleAltText(true);
 
     initToolbarButtons();
     initSpeechEngine();

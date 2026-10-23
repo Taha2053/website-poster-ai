@@ -1,0 +1,10 @@
+WEBVTT - From Language to Math: Transformer with Attention
+
+00:00.000 --> 00:35.000
+Modern language models rely on the Transformer architecture. Instead of processing text sequentially, the Self-Attention mechanism maps input tokens into Query, Key, and Value vectors.
+
+00:35.000 --> 01:20.000
+The attention weight between tokens is computed as the scaled dot-product of Query and Key, normalized through a softmax function, and scaled by the square root of the key dimension.
+
+01:20.000 --> 02:04.000
+This allows the model to connect distant words across academic documents simultaneously, driving MindEase’s real-time concept extraction and semantic chunking.
