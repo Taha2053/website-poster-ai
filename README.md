@@ -2,8 +2,7 @@
 
 > **GCD4F 2026 (Global Challenge for Design for Futures)**  
 > **Team:** The Architects — École Nationale Supérieure d'Ingénieurs de Tunis (ENSIT)  
-> **Target:** Neurodivergent Learners (ADHD, Dyslexia, ASD) and Multilingual STEM Students  
-> **Live Poster Companion Website:** Accessible Single-Page Digital Exhibition  
+> **Live Poster Companion Website:** [https://taha2053.github.io/website-poster-ai/](https://taha2053.github.io/website-poster-ai/)  
 
 ---
 
