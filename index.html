@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="jade" data-font="standard" data-size="normal" data-spacing="normal">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MindEase: The AI Learning Layer That Adapts To Every Brain. GCD4F 2026 Poster Companion and Interactive Cognitive Accessibility Exhibition.">
+  <meta name="author" content="The Architects, ENSIT">
+  <meta name="theme-color" content="#1b4332">
+  <title>MindEase — The AI Learning Layer That Adapts To Every Brain | GCD4F 2026</title>
+
+  <!-- Accessible Fonts: Atkinson Hyperlegible (Braille Institute) and Lexend (Dyslexia-Optimized) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Lexend:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- KaTeX for accessible math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+  <link rel="icon" type="image/png" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Screen Reader Announcements Live Region -->
+  <div id="sr-announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Reading Ruler Overlay for ADHD / Dyslexia Focus Tracking -->
+  <div id="reading-ruler" class="reading-ruler" aria-hidden="true" style="display: none;">
+    <div class="ruler-line"></div>
+  </div>
+
+  <!-- Skip to Content Links -->
+  <nav class="skip-links" aria-label="Skip links">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#accessibility-controls" class="skip-link">Skip to accessibility suite</a>
+    <a href="#interactive-simulator" class="skip-link">Skip to interactive demo</a>
+    <a href="#video-showcase" class="skip-link">Skip to video demonstrations</a>
+  </nav>
+
+  <!-- Sticky Accessibility Toolbar -->
+  <aside id="accessibility-controls" class="accessibility-bar" aria-label="Accessibility & Reading Suite">
+    <div class="a11y-container">
+      <div class="a11y-group a11y-brand-info">
+        <span class="a11y-badge"><span class="pulse-dot" aria-hidden="true"></span> A11y Suite</span>
+        <span class="a11y-caption" id="a11y-status-desc">WCAG 2.2 AAA Ready</span>
+      </div>
+
+      <!-- Theme Selector -->
+      <div class="a11y-group" role="group" aria-label="Color Themes">
+        <label for="theme-select" class="a11y-label">Theme:</label>
+        <select id="theme-select" class="a11y-select" aria-label="Select color theme">
+          <option value="jade">Jade &amp; Porcelain (Calm Light)</option>
+          <option value="midnight">Midnight Focus (Dark)</option>
+          <option value="high-contrast">High Contrast (WCAG AAA)</option>
+          <option value="sepia">Calm Sepia (Scotopic/Dyslexia)</option>
+        </select>
+      </div>
+
+      <!-- Text Sizing -->
+      <div class="a11y-group" role="group" aria-label="Text Size Controls">
+        <span class="a11y-label" id="text-size-label">Text:</span>
+        <button type="button" class="a11y-btn" id="btn-decrease-text" aria-labelledby="text-size-label btn-decrease-text-label" title="Decrease font size">
+          <span id="btn-decrease-text-label" class="sr-only">Decrease text size</span>
+          <span aria-hidden="true">A-</span>
+        </button>
+        <button type="button" class="a11y-btn" id="btn-reset-text" aria-labelledby="text-size-label btn-reset-text-label" title="Reset font size to normal">
+          <span id="btn-reset-text-label" class="sr-only">Reset text size</span>
+          <span aria-hidden="true">100%</span>
+        </button>
+        <button type="button" class="a11y-btn" id="btn-increase-text" aria-labelledby="text-size-label btn-increase-text-label" title="Increase font size">
+          <span id="btn-increase-text-label" class="sr-only">Increase text size</span>
+          <span aria-hidden="true">A+</span>
+        </button>
+      </div>
+
+      <!-- Dyslexia Font Toggle -->
+      <div class="a11y-group">
+        <button type="button" class="a11y-btn toggle-btn" id="btn-toggle-font" aria-pressed="false" title="Switch between Atkinson Hyperlegible and Dyslexia-Optimized Lexend font">
+          <span class="icon" aria-hidden="true">🔤</span>
+          <span class="btn-text">Dyslexia Font</span>
+        </button>
+      </div>
+
+      <!-- Reading Ruler Toggle -->
+      <div class="a11y-group">
+        <button type="button" class="a11y-btn toggle-btn" id="btn-toggle-ruler" aria-pressed="false" title="Toggle interactive reading guide bar (Alt+R)">
+          <span class="icon" aria-hidden="true">📏</span>
+          <span class="btn-text">Reading Ruler</span>
+        </button>
+      </div>
+
+      <!-- Speech Narration Reader -->
+      <div class="a11y-group audio-controls-group" role="group" aria-label="Speech Narration">
+        <button type="button" class="a11y-btn audio-btn" id="btn-speech-toggle" aria-pressed="false" title="Listen to poster content (Alt+S)">
+          <span class="icon" aria-hidden="true">🔊</span>
+          <span id="speech-btn-label">Listen to Poster</span>
+        </button>
+        <div class="speech-rate-wrapper">
+          <label for="speech-rate" class="sr-only">Narration Speed</label>
+          <select id="speech-rate" class="a11y-select small-select" aria-label="Narration speed">
+            <option value="0.8">0.8×</option>
+            <option value="1.0" selected>1.0×</option>
+            <option value="1.2">1.2×</option>
+            <option value="1.5">1.5×</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Ambient Focus Soundscape -->
+      <div class="a11y-group soundscape-group" role="group" aria-label="Focus Soundscape">
+        <button type="button" class="a11y-btn sound-btn" id="btn-soundscape-toggle" aria-pressed="false" title="Play calming background focus audio">
+          <span class="icon" aria-hidden="true">🎧</span>
+          <span id="soundscape-btn-label">Focus Sound</span>
+        </button>
+        <select id="soundscape-mode" class="a11y-select small-select" aria-label="Soundscape type">
+          <option value="pink">Pink Noise</option>
+          <option value="rain">Gentle Rain</option>
+          <option value="drone">Zen Drone</option>
+        </select>
+      </div>
+
+      <!-- More A11y Settings Trigger -->
+      <div class="a11y-group">
+        <button type="button" class="a11y-btn icon-only" id="btn-open-a11y-modal" aria-haspopup="dialog" aria-expanded="false" title="Open full accessibility preferences (Alt+A)">
+          <span aria-hidden="true">⚙️</span>
+          <span class="sr-only">Accessibility Preferences</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Primary Site Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="assets/images/logo.png" alt="MindEase Logo" class="brand-logo" width="48" height="48">
+        <div class="brand-text">
+          <span class="brand-title">MindEase</span>
+          <span class="brand-subtitle">The AI Learning Layer That Adapts To Every Brain</span>
+        </div>
+      </div>
+
+      <nav class="site-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#the-problem">The Friction</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="#interactive-simulator">Live Simulator</a></li>
+          <li><a href="#interface-gallery">Prototype Tour</a></li>
+          <li><a href="#video-showcase">Video Studio</a></li>
+          <li><a href="#verification">Evidence</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <span class="competition-tag" title="Global Challenge for Design for Futures 2026">GCD4F 2026</span>
+        <a href="https://github.com/Taha2053/MindEase" target="_blank" rel="noopener noreferrer" class="btn-git" title="View Source on GitHub (opens in new tab)">
+          <svg class="git-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span>Repository</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <!-- Hero Section -->
+    <section id="overview" class="section hero-section" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="badge-row">
+            <span class="pill-badge pill-accent">GCD4F 2026 Poster Companion</span>
+            <span class="pill-badge pill-neutral">The Architects • ENSIT</span>
+            <span class="pill-badge pill-sdg" title="United Nations Sustainable Development Goal 4: Quality Education">UN SDG 4.5 Aligned</span>
+          </div>
+
+          <h1 id="hero-title" class="hero-heading">
+            The AI Learning Layer That Adapts To Every Brain.
+          </h1>
+
+          <p class="hero-lead">
+            Educational content is built for one type of brain. MindEase is an AI-native browser extension that non-destructively transforms academic articles, complex STEM formulas, and educational video lectures in real time to match each student’s unique cognitive style — synthesising sessions into personalized memory artifacts.
+          </p>
+
+          <div class="hero-stats-grid" role="region" aria-label="Project Highlights">
+            <div class="stat-card">
+              <span class="stat-number">3 Layers</span>
+              <span class="stat-desc">Transform, Profile &amp; Synthesize</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">0% Destructive</span>
+              <span class="stat-desc">Preserves verbatim source text</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">81 States</span>
+              <span class="stat-desc">Passive cognitive Q-learning agent</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">66 / 66</span>
+              <span class="stat-desc">Hermetic unit tests passing</span>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <button type="button" class="btn btn-primary" id="btn-hero-listen">
+              <span class="btn-icon" aria-hidden="true">▶️</span>
+              <span>Listen to Poster Audio Guide</span>
+            </button>
+            <a href="#interactive-simulator" class="btn btn-secondary">
+              <span class="btn-icon" aria-hidden="true">⚡</span>
+              <span>Try Live Simulator</span>
+            </a>
+            <a href="#video-showcase" class="btn btn-tertiary">
+              <span class="btn-icon" aria-hidden="true">🎬</span>
+              <span>Watch Video Studio</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual" role="region" aria-label="Visual Overview of MindEase Transformation">
+          <div class="hero-card-preview">
+            <div class="preview-header">
+              <div class="window-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="preview-title">MindEase Shadow DOM In-Situ Overlay</span>
+              <span class="preview-tag">Live Demonstration</span>
+            </div>
+            <div class="preview-body">
+              <div class="concept-chip-row">
+                <span class="concept-chip active">[CONCEPT: Combinatorial Explosion]</span>
+                <span class="concept-chip">[DEF: Heuristic]</span>
+                <span class="concept-chip">[FORMULA: b^d]</span>
+              </div>
+              <div class="preview-chunk">
+                <p class="chunk-p">
+                  <strong>Semantic Chunk 1:</strong> In state-space search, each additional decision step multiplies the branching factor <span class="formula-tag">$\mathcal{O}(b^d)$</span>, rapidly exhausting working memory.
+                </p>
+                <div class="preview-action-callout">
+                  <span class="callout-icon" aria-hidden="true">💡</span>
+                  <div class="callout-text">
+                    <strong>MindEase Real-Time Intervention:</strong> Deconstructed into a visual search tree with hoverable heuristic definitions and step-paced audio pacing.
+                  </div>
+                </div>
+              </div>
+              <div class="preview-footer">
+                <span class="footer-indicator"><span class="status-indicator-dot" aria-hidden="true"></span> Learner Profile: ADHD + Dyslexia Preset</span>
+                <span class="source-toggle-indicator">Original Source Preserved [Alt+O]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Problem Section: The 4 Cognitive Friction Barriers -->
+    <section id="the-problem" class="section problem-section" aria-labelledby="problem-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag-row">
+            <span class="section-tag">The Friction</span>
+            <button type="button" class="btn-listen-section" data-read-target="#problem-narrative" aria-label="Listen to The Friction section">
+              <span aria-hidden="true">🔊</span> Listen
+            </button>
+          </div>
+          <h2 id="problem-title" class="section-title">The One-Size-Fits-All Crisis in Academic Learning</h2>
+          <p class="section-subtitle">
+            Current digital educational environments assume a neurotypical reader with uniform cognitive stamina. For neurodivergent learners—specifically students diagnosed with ADHD, dyslexia, autism, and multilingual students—dense educational materials induce severe perceptual and cognitive breakdown.
+          </p>
+        </div>
+
+        <div id="problem-narrative" class="sr-narration-block">
+          <div class="barriers-grid">
+            <article class="barrier-card" tabindex="0">
+              <div class="barrier-icon-badge" aria-hidden="true">🧠</div>
+              <h3 class="barrier-heading">1. Working Memory Fatigue</h3>
+              <p class="barrier-text">
+                Dense, unbroken walls of academic prose lack structural pauses. Learners with ADHD experience rapid cognitive overload within 4 to 7 minutes of unsegmented reading, triggering attention fatigue and involuntary focus drift.
+              </p>
+              <div class="barrier-remedy">
+                <strong>MindEase Solution:</strong> Non-destructive semantic chunking, progressive text reveals, and visual breathing anchors.
+              </div>
+            </article>
+
+            <article class="barrier-card" tabindex="0">
+              <div class="barrier-icon-badge" aria-hidden="true">📐</div>
+              <h3 class="barrier-heading">2. Symbolic Parsing Barriers</h3>
+              <p class="barrier-text">
+                Mathematical proofs and STEM formulas formatted as raw LaTeX strings or fragmented HTML break reading flow. For dyslexic readers, symbol orientation and spatial grouping create high visual friction.
+              </p>
+              <div class="barrier-remedy">
+                <strong>MindEase Solution:</strong> Isolated KaTeX math typesetting with accessible MathML alt-text, bounded outlines, and Manim visual animations.
+              </div>
+            </article>
+
+            <article class="barrier-card" tabindex="0">
+              <div class="barrier-icon-badge" aria-hidden="true">📖</div>
+              <h3 class="barrier-heading">3. Context-Free Vocabulary</h3>
+              <p class="barrier-text">
+                When encountering unfamiliar scientific terminology, students must switch browser tabs to search for definitions. Every context switch shatters working memory and distracts from comprehension.
+              </p>
+              <div class="barrier-remedy">
+                <strong>MindEase Solution:</strong> In-situ interactive <code class="code-tag">[DEF]</code> tooltips rendered directly over terms without leaving the paragraph.
+              </div>
+            </article>
+
+            <article class="barrier-card" tabindex="0">
+              <div class="barrier-icon-badge" aria-hidden="true">🔍</div>
+              <h3 class="barrier-heading">4. Skim Blindspots</h3>
+              <p class="barrier-text">
+                Students often skim through dense sections without registering key conceptual leaps. These blindspots remain invisible until high-stakes testing, leaving silent knowledge gaps.
+              </p>
+              <div class="barrier-remedy">
+                <strong>MindEase Solution:</strong> Passive behavioral dwell tracking, knowledge gap severity alerts (Critical/Moderate/Minor), and session review cards.
+              </div>
+            </article>
+          </div>
+
+          <!-- Comparison Table: Standard Tools vs MindEase -->
+          <div class="comparison-block" role="region" aria-label="Comparison between Traditional Tools and MindEase">
+            <h3 class="comparison-title">Why Generic Accessibility Fails: Traditional Tools vs. MindEase</h3>
+            <div class="table-responsive">
+              <table class="a11y-table">
+                <caption class="sr-only">Detailed architectural comparison between traditional accessibility tools and MindEase</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Dimension</th>
+                    <th scope="col">Traditional Tools (Screen Readers, Immersive Reader)</th>
+                    <th scope="col" class="highlight-th">MindEase Cognitive Layer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Source Text Preservation</th>
+                    <td>Destructive: re-writes or replaces original prose with automated generic summaries, stripping nuance.</td>
+                    <td class="cell-highlight"><strong>100% Non-Destructive:</strong> Verbatim source text retained in memory; accessible via instant one-key inspection toggle.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Personalization Model</th>
+                    <td>Static: One universal rule set applied identically to every single user.</td>
+                    <td class="cell-highlight"><strong>Individualized Cognitive Profile:</strong> 8-dimension preference puzzle + 81-state Q-learning policy adapted to your brain.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mathematical Formulas</th>
+                    <td>Reads formulas as flat alphanumeric strings or ignores raw LaTeX entirely.</td>
+                    <td class="cell-highlight"><strong>KaTeX + Grounded Manim:</strong> Formatted math with semantic audio descriptions and visual video derivations.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Post-Study Synthesis</th>
+                    <td>None. When you close the tab, the learning context and cognitive trail are completely lost.</td>
+                    <td class="cell-highlight"><strong>7-Section Knowledge Artifact:</strong> Identifies ungrasped gaps, builds Anki flashcards, and maps cross-source concepts.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The 3-Layer Architecture Section -->
+    <section id="architecture" class="section architecture-section" aria-labelledby="arch-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag-row">
+            <span class="section-tag">System Design</span>
+            <button type="button" class="btn-listen-section" data-read-target="#arch-narrative" aria-label="Listen to Three-Layer Architecture section">
+              <span aria-hidden="true">🔊</span> Listen
+            </button>
+          </div>
+          <h2 id="arch-title" class="section-title">The Three-Layer Cognitive Architecture</h2>
+          <p class="section-subtitle">
+            MindEase operates across five browser entrypoints coordinating through strongly-typed messaging. The system decouples presentation transformation, behavioral modeling, and session memory into three distinct, robust layers.
+          </p>
+        </div>
+
+        <div id="arch-narrative" class="sr-narration-block">
+          <div class="architecture-diagram" role="region" aria-label="Architecture Flow Diagram">
+            <div class="diagram-step">
+              <div class="step-num" aria-hidden="true">01</div>
+              <div class="step-card">
+                <div class="step-header">
+                  <span class="layer-pill layer-1">Layer 1</span>
+                  <h3 class="step-title">Real-Time Content Transformation</h3>
+                </div>
+                <p class="step-desc">
+                  Intercepts academic pages, PDFs, and videos. The backend DeepSeek planner and Mistral generator tag paragraphs into semantic blocks without destroying source text.
+                </p>
+                <ul class="step-feature-list">
+                  <li><strong>Semantic Tagging:</strong> <code class="tag">[CHUNK]</code>, <code class="tag">[CONCEPT]</code>, <code class="tag">[DEF]</code>, <code class="tag">[FORMULA]</code>.</li>
+                  <li><strong>Shadow DOM Isolation:</strong> Encapsulated inside an open Shadow Root with <code>all: initial</code> to prevent host CSS collisions.</li>
+                  <li><strong>Multimodal Generation:</strong> KaTeX equations, Napkin AI vector diagrams, and Manim mathematical animations.</li>
+                  <li><strong>Dual-Modality Narration:</strong> Client-side sentence chunking with real-time visual karaoke highlighting.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="diagram-connector" aria-hidden="true">
+              <span class="connector-line"></span>
+              <span class="connector-arrow">▼</span>
+            </div>
+
+            <div class="diagram-step">
+              <div class="step-num" aria-hidden="true">02</div>
+              <div class="step-card">
+                <div class="step-header">
+                  <span class="layer-pill layer-2">Layer 2</span>
+                  <h3 class="step-title">Adaptive Cognitive Profiling (RL Agent)</h3>
+                </div>
+                <p class="step-desc">
+                  Models learner processing characteristics across 81 discrete behavioral states ($3^4$ combinations of Highlight, Pause, Re-read, and Skip rates) and 9 action spaces.
+                </p>
+                <ul class="step-feature-list">
+                  <li><strong>The Learning Puzzle:</strong> 8-dimension onboarding questionnaire (Visual/Text, Density, Pacing, Support Needs).</li>
+                  <li><strong>Strict User Agency:</strong> Manual user overrides always supersede model recommendations.</li>
+                  <li><strong>Zero Mid-Session Disruption:</strong> Telemetry is logged passively; adaptation parameters never jarringly mutate mid-paragraph.</li>
+                  <li><strong>Q-Learning Reward:</strong> Updates post-session based on cumulative engagement: $R = 2.0 \cdot \text{engaged} - 1.5 \cdot \text{skip} + 0.5 \cdot \text{highlight}$.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="diagram-connector" aria-hidden="true">
+              <span class="connector-line"></span>
+              <span class="connector-arrow">▼</span>
+            </div>
+
+            <div class="diagram-step">
+              <div class="step-num" aria-hidden="true">03</div>
+              <div class="step-card">
+                <div class="step-header">
+                  <span class="layer-pill layer-3">Layer 3</span>
+                  <h3 class="step-title">Session Memory &amp; Synthesis</h3>
+                </div>
+                <p class="step-desc">
+                  Closes the learning loop by transforming passive web browsing into an active, reviewable knowledge base and structured study cards.
+                </p>
+                <ul class="step-feature-list">
+                  <li><strong>Multi-Tab Workspace:</strong> Tracks active vs. passive focus across multiple research papers and Wikipedia tabs.</li>
+                  <li><strong>Knowledge Gap Severity Ranking:</strong> Categorizes rushed or skipped concepts into Critical, Moderate, or Minor gaps.</li>
+                  <li><strong>7-Section Knowledge Artifact:</strong> Synthesizes visited resources, key definitions, cross-source links, and Anki-ready flashcards.</li>
+                  <li><strong>Privacy &amp; Data Sovereignty:</strong> Local-first IndexedDB storage with optional encrypted Supabase cloud synchronization.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Simulator / Live Before & After Demo -->
+    <section id="interactive-simulator" class="section demo-section" aria-labelledby="simulator-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag-row">
+            <span class="section-tag">Interactive Experience</span>
+            <button type="button" class="btn-listen-section" data-read-target="#simulator-narrative" aria-label="Listen to Live Simulator instructions">
+              <span aria-hidden="true">🔊</span> Listen
+            </button>
+          </div>
+          <h2 id="simulator-title" class="section-title">Experience MindEase: Live Adaptation Simulator</h2>
+          <p class="section-subtitle">
+            Toggle between the unadapted, dense academic format and MindEase’s real-time cognitive transformation. Experiment with different learner profiles to see how the layout reshapes itself to protect working memory.
+          </p>
+        </div>
+
+        <div id="simulator-narrative" class="sr-only">
+          Interactive simulator showing an academic paragraph on Artificial Intelligence and State Space Search. You can toggle between Standard Raw Academic View and MindEase Transformed View, and switch between ADHD, Dyslexia, and Multilingual learner presets.
+        </div>
+
+        <div class="simulator-wrapper" role="region" aria-label="Interactive Content Transformation Simulator">
+          <!-- Simulator Controls -->
+          <div class="simulator-toolbar" role="toolbar" aria-label="Simulator Controls">
+            <div class="sim-control-group">
+              <span class="sim-label">Mode:</span>
+              <div class="btn-toggle-pair" role="radiogroup" aria-label="Adaptation View Mode">
+                <button type="button" class="sim-btn sim-view-btn" id="btn-mode-raw" role="radio" aria-checked="false">
+                  Standard Raw View
+                </button>
+                <button type="button" class="sim-btn sim-view-btn active" id="btn-mode-adapted" role="radio" aria-checked="true">
+                  MindEase Transformed View
+                </button>
+              </div>
+            </div>
+
+            <div class="sim-control-group" id="sim-profile-group">
+              <label for="sim-profile-select" class="sim-label">Learner Profile:</label>
+              <select id="sim-profile-select" class="a11y-select">
+                <option value="adhd" selected>ADHD Preset (Chunked + Anchors)</option>
+                <option value="dyslexia">Dyslexia Preset (Spaced + Lexend)</option>
+                <option value="esl">Multilingual Preset (Tooltips + Simplified)</option>
+              </select>
+            </div>
+
+            <div class="sim-control-group" id="sim-features-group">
+              <button type="button" class="sim-feature-btn active" id="toggle-chunking" aria-pressed="true">
+                <span>Chunking</span>
+              </button>
+              <button type="button" class="sim-feature-btn active" id="toggle-definitions" aria-pressed="true">
+                <span>Definitions</span>
+              </button>
+              <button type="button" class="sim-feature-btn active" id="toggle-math" aria-pressed="true">
+                <span>Math Typesetting</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Simulator Content Display -->
+          <div class="simulator-stage" id="simulator-stage">
+            <!-- Raw Academic View -->
+            <div class="sim-view raw-view" id="sim-raw-view" style="display: none;">
+              <div class="raw-document-header">
+                <span class="doc-journal">Journal of Artificial Intelligence Research (Vol. 42)</span>
+                <h3 class="raw-title">Combinatorial Search and Heuristic Optimization in State-Space Exploration</h3>
+                <span class="doc-authors">A. Mercer, K. Vance, et al. • Published 2026</span>
+              </div>
+              <div class="raw-text-body">
+                <p>
+                  Artificial intelligence problem solving in discrete domains fundamentally relies on state-space search architectures where the totality of achievable configurations is formally represented as a directed graph G = (V, E). When traversing combinatorial structures, naive exhaustive search incurs an exponential complexity penalty governed by O(b^d), where b represents the branching factor of the search graph and d signifies the minimal depth of the optimal goal state. In non-trivial decision domains such as automated theorem proving or game-tree evaluations, the combinatorial explosion renders blind traversal computationally intractable within standard computational horizons. Consequently, heuristic functions h(n) estimating the cost from candidate node n to the nearest goal state are introduced to prune suboptimal trajectories, transforming unguided exploration into an admissible A* search formulation whose temporal efficiency is strictly bounded by the informational quality and monotonicity of the employed heuristic estimator.
+                </p>
+                <p>
+                  Furthermore, when transitions incorporate stochastic environmental dynamics, the representation generalizes to a Markov Decision Process defined by the 5-tuple (S, A, P, R, \gamma). Here, the optimal state-value policy V*(s) satisfies the recursive Bellman optimality equation: V*(s) = \max_{a \in A} \sum_{s' \in S} P(s' | s, a) [ R(s, a, s') + \gamma V*(s') ], requiring continuous convergence over iterative dynamic programming sweeps.
+                </p>
+              </div>
+              <div class="raw-friction-alert" role="status">
+                <span class="alert-icon" aria-hidden="true">⚠️</span>
+                <span><strong>Friction Analysis:</strong> 2 dense paragraphs, 290 words, 0 visual breaks, 2 unrendered raw LaTeX equations, 6 dense domain-specific terms without definitions. High cognitive drop-off risk.</span>
+              </div>
+            </div>
+
+            <!-- MindEase Transformed View -->
+            <div class="sim-view adapted-view active" id="sim-adapted-view">
+              <div class="adapted-banner">
+                <div class="adapted-banner-left">
+                  <span class="mindease-logo-mini" aria-hidden="true">✨</span>
+                  <span>MindEase Active Transformation • Section 1 of 2</span>
+                </div>
+                <div class="adapted-banner-right">
+                  <button type="button" class="btn-listen-chunk" id="btn-listen-sim-chunk" aria-label="Listen to this transformed chunk">
+                    <span aria-hidden="true">🔊</span> Read Aloud
+                  </button>
+                  <button type="button" class="btn-show-source" id="btn-toggle-source-inline" aria-expanded="false">
+                    View Original Source Section
+                  </button>
+                </div>
+              </div>
+
+              <!-- Collapsible Original Source Section (Source-Preserving Contract) -->
+              <div class="inline-source-drawer" id="inline-source-drawer" style="display: none;" aria-hidden="true">
+                <div class="source-drawer-header">
+                  <strong>Original Preserved Source (Immutable):</strong>
+                </div>
+                <p class="source-drawer-text">
+                  Artificial intelligence problem solving in discrete domains fundamentally relies on state-space search architectures where the totality of achievable configurations is formally represented as a directed graph G = (V, E)...
+                </p>
+              </div>
+
+              <!-- Transformed Chunks -->
+              <div class="chunk-container">
+                <!-- Chunk 1 -->
+                <article class="mindease-chunk" id="chunk-1">
+                  <div class="chunk-header">
+                    <span class="chunk-index">Chunk 1: The Core Dilemma</span>
+                    <span class="concept-anchor" title="Anchored Concept">[CONCEPT: Combinatorial Explosion]</span>
+                  </div>
+                  <div class="chunk-content">
+                    <p>
+                      In AI, exploring solutions means searching through a network of possible configurations called a
+                      <button type="button" class="def-tooltip-trigger" data-term="State-Space" data-def="A model of all possible states or moves in a problem, like every board position in chess." aria-describedby="def-state-space">
+                        <strong>state-space</strong>
+                        <span class="def-bubble" id="def-state-space" role="tooltip">A model of all possible states or moves in a problem, like every board position in chess.</span>
+                      </button>.
+                    </p>
+                    <p>
+                      If an algorithm searches every branch blindly, the computational workload multiplies exponentially:
+                    </p>
+                    <div class="katex-formula-block" role="region" aria-label="Search complexity formula: Big O of b to the power of d">
+                      <span class="math-rendered" data-math="\mathcal{O}(b^d)">$\mathcal{O}(b^d)$</span>
+                      <span class="math-explanation">Where $b$ = choices per step (branching factor), $d$ = steps to reach the goal (depth).</span>
+                    </div>
+                    <div class="chunk-takeaway">
+                      <span class="takeaway-badge">Key Takeaway</span>
+                      <span>Without a guide, even simple problems generate billions of dead-ends faster than any computer can evaluate.</span>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Chunk 2 -->
+                <article class="mindease-chunk" id="chunk-2">
+                  <div class="chunk-header">
+                    <span class="chunk-index">Chunk 2: The Solution</span>
+                    <span class="concept-anchor" title="Anchored Concept">[CONCEPT: Heuristic Guidance]</span>
+                  </div>
+                  <div class="chunk-content">
+                    <p>
+                      To prevent exponential overload, AI uses an intelligent shortcut called a
+                      <button type="button" class="def-tooltip-trigger" data-term="Heuristic" data-def="An educated rule-of-thumb or estimate that guides search toward the goal without exploring every path." aria-describedby="def-heuristic">
+                        <strong>heuristic function $h(n)$</strong>
+                        <span class="def-bubble" id="def-heuristic" role="tooltip">An educated rule-of-thumb or estimate that guides search toward the goal without exploring every path.</span>
+                      </button>.
+                    </p>
+                    <p>
+                      Instead of checking every move, the heuristic ranks which paths look most promising, pruning away dead ends.
+                    </p>
+                    <div class="diagram-anchor-box">
+                      <div class="diagram-header">
+                        <span class="diagram-icon" aria-hidden="true">📊</span>
+                        <span>Napkin AI Generated Concept Diagram</span>
+                      </div>
+                      <div class="diagram-illustration" aria-label="Visual tree search diagram showing pruning of branches">
+                        <svg class="tree-svg" viewBox="0 0 400 120" role="img" aria-label="Search tree diagram showing root node branching into evaluated nodes with bad branches pruned">
+                          <circle cx="200" cy="20" r="14" class="node-root" fill="var(--color-accent)" />
+                          <text x="200" y="24" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">Start</text>
+                          <!-- Left branch -->
+                          <line x1="190" y1="32" x2="100" y2="70" stroke="var(--color-border)" stroke-width="2" />
+                          <circle cx="100" cy="75" r="12" class="node-pruned" fill="var(--color-surface-sunken)" stroke="var(--color-error)" stroke-width="2" />
+                          <text x="100" y="79" text-anchor="middle" fill="var(--color-error)" font-size="9">Pruned ✕</text>
+                          <!-- Middle branch -->
+                          <line x1="200" y1="34" x2="200" y2="70" stroke="var(--color-accent)" stroke-width="2" />
+                          <circle cx="200" cy="75" r="14" class="node-promising" fill="var(--color-accent-light)" stroke="var(--color-accent)" stroke-width="2" />
+                          <text x="200" y="79" text-anchor="middle" fill="var(--color-accent-dark)" font-size="9" font-weight="bold">h(n)=2 ✓</text>
+                          <!-- Right branch -->
+                          <line x1="210" y1="32" x2="300" y2="70" stroke="var(--color-border)" stroke-width="2" />
+                          <circle cx="300" cy="75" r="12" class="node-pruned" fill="var(--color-surface-sunken)" stroke="var(--color-error)" stroke-width="2" />
+                          <text x="300" y="79" text-anchor="middle" fill="var(--color-error)" font-size="9">Pruned ✕</text>
+                          <!-- Goal -->
+                          <line x1="200" y1="89" x2="200" y2="105" stroke="var(--color-accent)" stroke-width="2" stroke-dasharray="3,3" />
+                          <rect x="175" y="105" width="50" height="15" rx="3" fill="var(--color-accent)" />
+                          <text x="200" y="116" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">Goal State</text>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!-- MindEase Feedback Bar -->
+              <div class="mindease-feedback-bar">
+                <span class="feedback-label">Was this chunk clear?</span>
+                <button type="button" class="btn-fb" aria-label="Yes, this was clear">👍 Clear</button>
+                <button type="button" class="btn-fb" aria-label="Partly clear">🤔 Partly</button>
+                <button type="button" class="btn-fb" aria-label="Needs simpler explanation">🔄 Simpler</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Prototype Tour & Screenshots Section -->
+    <section id="interface-gallery" class="section gallery-section" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag-row">
+            <span class="section-tag">Prototype Tour</span>
+            <button type="button" class="btn-listen-section" data-read-target="#gallery-narrative" aria-label="Listen to Prototype Tour section">
+              <span aria-hidden="true">🔊</span> Listen
+            </button>
+          </div>
+          <h2 id="gallery-title" class="section-title">MindEase in Action: Interface &amp; Workflow Tour</h2>
+          <p class="section-subtitle">
+            Directly from the running prototype. Explore how the browser extension integrates into real-world reading sessions, empowers learner agency, and synthesizes study history. Click any screenshot to enlarge.
+          </p>
+        </div>
+
+        <div id="gallery-narrative" class="sr-only">
+          Gallery of screenshots showing MindEase in use: Wikipedia In-situ adaptation with sidebar, The Learning Puzzle profile customizer, Session Dashboard metrics and focus visualization, Video Studio Manim generator, and Data Sovereignty privacy controls.
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Card 1: In-situ Wikipedia Overlay -->
+          <article class="gallery-card" tabindex="0">
+            <div class="gallery-img-wrap">
+              <img src="assets/images/1.png" alt="MindEase browser extension active on a Wikipedia page about Artificial Intelligence, displaying a clean sidebar with real-time concept definitions and breakdowns." class="gallery-img" loading="lazy">
+              <div class="gallery-overlay-badge">In-Situ Reading</div>
+            </div>
+            <div class="gallery-details">
+              <h3 class="gallery-card-title">1. Real-Time In-Situ Reading Companion</h3>
+              <p class="gallery-card-desc">
+                Operating directly on Wikipedia’s <em>Artificial Intelligence</em> article. MindEase injects an isolated Shadow DOM sidebar that extracts key concepts, renders definitions, and provides step-by-step reading guidance without modifying host layout.
+              </p>
+              <div class="a11y-transcript-details">
+                <details>
+                  <summary class="transcript-toggle">Detailed Assistive Description</summary>
+                  <p class="transcript-content">
+                    The screenshot captures a Firefox browser window showing Wikipedia’s Artificial Intelligence entry. On the right side, the MindEase companion panel floats cleanly, displaying a title “What is Artificial Intelligence?”, highlighted interactive definitions, real-life examples of AI, and simplified explanation blocks that break down the dense opening paragraph into digestible cognitive units.
+                  </p>
+                </details>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: The Learning Puzzle -->
+          <article class="gallery-card" tabindex="0">
+            <div class="gallery-img-wrap">
+              <img src="assets/images/8.png" alt="MindEase Learning Puzzle interface showing customizable cognitive preference pieces: Visual explanations, Short session length, Slower pace, Concise detail, and Support tags for Dyslexia and Concept Anchors." class="gallery-img" loading="lazy">
+              <div class="gallery-overlay-badge">Learner Agency</div>
+            </div>
+            <div class="gallery-details">
+              <h3 class="gallery-card-title">2. "My Learning Puzzle" Profile</h3>
+              <p class="gallery-card-desc">
+                Learner autonomy at the center. Rather than clinical labels, students arrange puzzle pieces: Visual vs Text, Session Length, Reading Pace, Level of Detail, and active accommodations like Dyslexia Support and Concept Anchors.
+              </p>
+              <div class="a11y-transcript-details">
+                <details>
+                  <summary class="transcript-toggle">Detailed Assistive Description</summary>
+                  <p class="transcript-content">
+                    The screenshot displays the MindEase Learning Profile workspace. At the top, six interactive puzzle piece controls are active: Format (Visual explanations), Session length (Short), Reading pace (Slower), Detail (Concise), Explanation order (Examples first). Active support tags include “Concept anchors”, “English language support”, and “DYSLEXIA support”. Below, a transparent explanation states: “Why MindEase adapted this content: preference-based suggestion, not a diagnosis or proof that one format improves comprehension.”
+                  </p>
+                </details>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Session Dashboard & Focus Visualization -->
+          <article class="gallery-card" tabindex="0">
+            <div class="gallery-img-wrap">
+              <img src="assets/images/5.png" alt="MindEase Session Dashboard displaying session duration, resources used, concepts explored, notes captured, and an active focus visualization graph." class="gallery-img" loading="lazy">
+              <div class="gallery-overlay-badge">Synthesis</div>
+            </div>
+            <div class="gallery-details">
+              <h3 class="gallery-card-title">3. Post-Session Review &amp; Knowledge Gaps</h3>
+              <p class="gallery-card-desc">
+                Post-session dashboard showing the comprehensive 7-section Knowledge Artifact. Displays active session duration, resource tabs processed, concept connection maps, and heuristically flagged knowledge gaps for review.
+              </p>
+              <div class="a11y-transcript-details">
+                <details>
+                  <summary class="transcript-toggle">Detailed Assistive Description</summary>
+                  <p class="transcript-content">
+                    The screenshot shows the MindEase Dashboard with top navigation tabs: Today, Learning history, Review library, My learning puzzle, Video studio, and Account & data. Under “Your learning session”, key metrics report Duration, Resources Used, Concepts Explored, Notes Captured, and Focus Score. A dedicated “Focus Visualization” timeline illustrates engaged versus passive reading intervals.
+                  </p>
+                </details>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Video Studio & Manim Animations -->
+          <article class="gallery-card" tabindex="0">
+            <div class="gallery-img-wrap">
+              <img src="assets/images/13.png" alt="MindEase Video Studio showing generated Manim animations for Combinatorial Explosion, Symbolic AI, Markov Decision Process, and Transformers with Attention." class="gallery-img" loading="lazy">
+              <div class="gallery-overlay-badge">Multimodal Studio</div>
+            </div>
+            <div class="gallery-details">
+              <h3 class="gallery-card-title">4. Grounded Manim Video Studio</h3>
+              <p class="gallery-card-desc">
+                Turns dense theoretical papers into crisp, mathematically grounded animations. DeepSeek plans the visual narrative, Manim renders Python mathematical formulas into video, and Azure speech generates synchronized audio narration.
+              </p>
+              <div class="a11y-transcript-details">
+                <details>
+                  <summary class="transcript-toggle">Detailed Assistive Description</summary>
+                  <p class="transcript-content">
+                    The screenshot captures the Video Studio route. It lists generated video explanations ready for playback and MP4 download, including “Combinatorial explosion in reasoning search”, “Symbolic vs. Sub-symbolic”, “Markov Decision Process”, “Transformer with Attention”, and “State Space Search”. Each card shows completion status, thumbnail preview, and direct download links.
+                  </p>
+                </details>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: Privacy Sovereignty & Local Storage -->
+          <article class="gallery-card" tabindex="0">
+            <div class="gallery-img-wrap">
+              <img src="assets/images/10.png" alt="MindEase Account and Data view emphasizing local-first privacy where profile and session data stay in the browser, with optional export and deletion." class="gallery-img" loading="lazy">
+              <div class="gallery-overlay-badge">Privacy First</div>
+            </div>
+            <div class="gallery-details">
+              <h3 class="gallery-card-title">5. Data Sovereignty &amp; Local-First Storage</h3>
+              <p class="gallery-card-desc">
+                Student privacy is non-negotiable. MindEase functions completely in local mode without an account. Profiles and session archives reside in browser IndexedDB, with complete export and instant deletion controls.
+              </p>
+              <div class="a11y-transcript-details">
+                <details>
+                  <summary class="transcript-toggle">Detailed Assistive Description</summary>
+                  <p class="transcript-content">
+                    The screenshot presents the Account & Data settings. Prominent text assures the learner: “Profile and session data currently stay in this browser. Local mode works without an account. Sign in only if you want synchronization across devices.” Action buttons allow learners to “Export learner data” as JSON or “Delete learner data” completely with a single click.
+                  </p>
+                </details>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Reading Mode Comparison -->
+          <article class="gallery-card" tabindex="0">
+            <div class="gallery-img-wrap">
+              <img src="assets/images/3.png" alt="MindEase in-situ Wikipedia reading mode showing contextual table of real-life AI examples and real-time concept definitions side-by-side with Wikipedia text." class="gallery-img" loading="lazy">
+              <div class="gallery-overlay-badge">Dual-Modality</div>
+            </div>
+            <div class="gallery-details">
+              <h3 class="gallery-card-title">6. Contextual Concept Anchors &amp; Tables</h3>
+              <p class="gallery-card-desc">
+                Abstract concepts are grounded with concrete, real-life tables and examples. As the learner scrolls the source article, the companion dynamically highlights matching concepts and presents structured reference cards.
+              </p>
+              <div class="a11y-transcript-details">
+                <details>
+                  <summary class="transcript-toggle">Detailed Assistive Description</summary>
+                  <p class="transcript-content">
+                    The screenshot shows Wikipedia text alongside a MindEase card titled “Real-life examples of AI”. It includes a two-column table mapping common tools (like Google Search, Face ID, and Voice Assistants) to their underlying AI concepts, helping learners anchor abstract computer science definitions to tangible experiences.
+                  </p>
+                </details>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Studio Showcase & Media Player -->
+    <section id="video-showcase" class="section video-section" aria-labelledby="video-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag-row">
+            <span class="section-tag">Grounded Media Studio</span>
+            <button type="button" class="btn-listen-section" data-read-target="#video-narrative" aria-label="Listen to Video Studio section">
+              <span aria-hidden="true">🔊</span> Listen
+            </button>
+          </div>
+          <h2 id="video-title" class="section-title">MindEase Video Studio: Spoken &amp; Animated Demos</h2>
+          <p class="section-subtitle">
+            All videos feature voice narration, closed captions, and complete text transcripts. Select a topic below to watch how MindEase translates complex computer science mathematics into intuitive visual explanations.
+          </p>
+        </div>
+
+        <div id="video-narrative" class="sr-only">
+          Video demonstration player containing six playable educational animations generated by MindEase, with audio voiceover, closed captions, and synchronized text transcripts.
+        </div>
+
+        <div class="video-player-container" role="region" aria-label="Accessible Video Player">
+          <!-- Video Selector Tabs -->
+          <div class="video-tabs" role="tablist" aria-label="Select Video Demonstration">
+            <button type="button" role="tab" class="video-tab active" id="tab-v1" aria-selected="true" aria-controls="video-player-panel" data-src="assets/videos/video1.mp4" data-title="Combinatorial Explosion in Reasoning Search" data-duration="1m 13s" data-topic="State Space &amp; Search Complexity">
+              <span class="vtab-number">01</span>
+              <span class="vtab-text">Combinatorial Explosion</span>
+            </button>
+            <button type="button" role="tab" class="video-tab" id="tab-v2" aria-selected="false" aria-controls="video-player-panel" data-src="assets/videos/video2.mp4" data-title="Two Families of AI: Symbolic vs Sub-Symbolic" data-duration="1m 18s" data-topic="Logic vs Neural Networks">
+              <span class="vtab-number">02</span>
+              <span class="vtab-text">Symbolic vs Sub-Symbolic</span>
+            </button>
+            <button type="button" role="tab" class="video-tab" id="tab-v3" aria-selected="false" aria-controls="video-player-panel" data-src="assets/videos/video3.mp4" data-title="Markov Decision Process (MDP)" data-duration="1m 44s" data-topic="Reinforcement Learning Dynamics">
+              <span class="vtab-number">03</span>
+              <span class="vtab-text">Markov Decision Process</span>
+            </button>
+            <button type="button" role="tab" class="video-tab" id="tab-v4" aria-selected="false" aria-controls="video-player-panel" data-src="assets/videos/video4.mp4" data-title="From Language to Math: Transformer with Attention" data-duration="2m 04s" data-topic="Self-Attention &amp; Vectors">
+              <span class="vtab-number">04</span>
+              <span class="vtab-text">Transformer Attention</span>
+            </button>
+            <button type="button" role="tab" class="video-tab" id="tab-v5" aria-selected="false" aria-controls="video-player-panel" data-src="assets/videos/video5.mp4" data-title="State Space Search &amp; Heuristics" data-duration="1m 25s" data-topic="Graph Search &amp; Pruning">
+              <span class="vtab-number">05</span>
+              <span class="vtab-text">State Space Search</span>
+            </button>
+            <button type="button" role="tab" class="video-tab" id="tab-onb" aria-selected="false" aria-controls="video-player-panel" data-src="assets/videos/onboarding_compressed.mp4" data-title="MindEase Onboarding Walkthrough" data-duration="35s" data-topic="Learner Setup &amp; Preferences">
+              <span class="vtab-number">06</span>
+              <span class="vtab-text">Onboarding Walkthrough</span>
+            </button>
+          </div>
+
+          <!-- Video Stage -->
+          <div id="video-player-panel" class="video-stage" role="tabpanel" aria-labelledby="tab-v1">
+            <div class="video-screen-wrapper">
+              <video id="main-video" class="responsive-video" controls preload="metadata" playsinline poster="assets/images/13.png">
+                <source id="video-source" src="assets/videos/video1.mp4" type="video/mp4">
+                Your browser does not support standard HTML5 video playback.
+              </video>
+            </div>
+
+            <!-- Video Info & Meta -->
+            <div class="video-meta-bar">
+              <div class="vmeta-left">
+                <h3 id="current-video-title" class="vmeta-title">Combinatorial Explosion in Reasoning Search</h3>
+                <span id="current-video-topic" class="vmeta-sub">Topic: State Space &amp; Search Complexity • Duration: 1m 13s</span>
+              </div>
+              <div class="vmeta-right">
+                <span class="badge-manim">Rendered via Manim + DeepSeek</span>
+                <span class="badge-audio">Spoken Voiceover Included</span>
+              </div>
+            </div>
+
+            <!-- Transcript Accordion -->
+            <div class="video-transcript-box">
+              <details class="transcript-details">
+                <summary class="transcript-summary" id="transcript-summary-btn">
+                  <span class="summary-text">View Full Accessible Video Transcript &amp; Formula Breakdown</span>
+                  <span class="summary-badge">Captions &amp; Text</span>
+                </summary>
+                <div class="transcript-pane" id="video-transcript-pane">
+                  <div class="transcript-segment">
+                    <span class="ts-time">[00:00 - 00:20]</span>
+                    <p class="ts-text">
+                      <strong>Narrator:</strong> "When an AI explores possible choices, every decision branches into multiple next steps. In game playing, puzzle solving, and theorem proving, this branching creates a rapidly expanding tree of possibilities."
+                    </p>
+                  </div>
+                  <div class="transcript-segment">
+                    <span class="ts-time">[00:20 - 00:45]</span>
+                    <p class="ts-text">
+                      <strong>Narrator:</strong> "Mathematically, the total number of states visited scales exponentially as $b$ raised to the power of $d$, written as $\mathcal{O}(b^d)$. Even with a modest branching factor of 3 and a depth of 20, the search space reaches over three billion distinct possibilities."
+                    </p>
+                  </div>
+                  <div class="transcript-segment">
+                    <span class="ts-time">[00:45 - 01:13]</span>
+                    <p class="ts-text">
+                      <strong>Narrator:</strong> "This is known as the combinatorial explosion. To overcome this limitation, search algorithms employ heuristic evaluations to discard unpromising trajectories, reducing exponential search complexity to a tractable, focused path toward the goal."
+                    </p>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Evidence & Rigorous Verification Section -->
+    <section id="verification" class="section evidence-section" aria-labelledby="evidence-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag-row">
+            <span class="section-tag">Audit &amp; Research</span>
+            <button type="button" class="btn-listen-section" data-read-target="#evidence-narrative" aria-label="Listen to Technical Evidence section">
+              <span aria-hidden="true">🔊</span> Listen
+            </button>
+          </div>
+          <h2 id="evidence-title" class="section-title">Evidence-Led Engineering &amp; Research Audit</h2>
+          <p class="section-subtitle">
+            Grounding claims in source code reality. MindEase was audited on 26 September 2026. Every metric below is backed by running test suites, build outputs, and codebase verification.
+          </p>
+        </div>
+
+        <div id="evidence-narrative" class="sr-narration-block">
+          <div class="evidence-grid">
+            <div class="evidence-card">
+              <span class="ev-label">Source Lines of Code</span>
+              <span class="ev-value">15,679 LOC</span>
+              <span class="ev-detail">Under <code>src/</code> across 70 TypeScript and TSX files in strict mode.</span>
+            </div>
+            <div class="evidence-card">
+              <span class="ev-label">Unit Test Suite</span>
+              <span class="ev-value">66 / 66 Pass</span>
+              <span class="ev-detail">Hermetic Vitest tests across Layer 1, Layer 2, Layer 3, and LaTeX formatting.</span>
+            </div>
+            <div class="evidence-card">
+              <span class="ev-label">Browser Targets</span>
+              <span class="ev-value">Dual MV3</span>
+              <span class="ev-detail">Automated builds for Google Chrome (3.38 MB) and Mozilla Firefox (3.38 MB).</span>
+            </div>
+            <div class="evidence-card">
+              <span class="ev-label">DOM Isolation</span>
+              <span class="ev-value">Shadow Root</span>
+              <span class="ev-detail">Open Shadow DOM with <code>all: initial</code> CSS reset blocks host page style leaks.</span>
+            </div>
+          </div>
+
+          <div class="clarity-callout" role="note">
+            <div class="callout-header">
+              <span class="callout-badge-icon" aria-hidden="true">⚖️</span>
+              <h3 class="callout-heading">Scientific Integrity &amp; Responsible Framing</h3>
+            </div>
+            <div class="callout-body">
+              <p>
+                In alignment with high academic standards, the MindEase team explicitly clarifies what the current prototype demonstrates:
+              </p>
+              <ul class="clarity-list">
+                <li>
+                  <strong>Preference-Led, Not Diagnostic:</strong> Onboarding accommodates learner-stated preferences (e.g. "I prefer visual explanations and shorter sections"). It does not attempt to diagnose psychological conditions or claim universal comprehension improvements.
+                </li>
+                <li>
+                  <strong>Active Ratio vs Attention:</strong> The displayed <em>Focus Score</em> in the dashboard represents the mathematical ratio of active dwell time to total session duration (filtering out idle periods &gt;5 min). It is a passive activity proxy, not a direct neural measure of human attention or cognitive mastery.
+                </li>
+                <li>
+                  <strong>Strict Non-Destructive Invariance:</strong> Generated adapted lessons are always paired with the exact verbatim original source blocks, allowing the reader to inspect the author’s original wording at any moment.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility Suite Guide & Keyboard Shortcuts -->
+    <section id="keyboard-guide" class="section a11y-guide-section" aria-labelledby="guide-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag-row">
+            <span class="section-tag">Inclusive Design</span>
+            <button type="button" class="btn-listen-section" data-read-target="#guide-narrative" aria-label="Listen to Keyboard Guide section">
+              <span aria-hidden="true">🔊</span> Listen
+            </button>
+          </div>
+          <h2 id="guide-title" class="section-title">Universal Access &amp; Assistive Technology Reference</h2>
+          <p class="section-subtitle">
+            This website is crafted to exceed WCAG 2.2 Level AAA success criteria. Every interactive feature can be operated via keyboard, screen reader, or switch device.
+          </p>
+        </div>
+
+        <div id="guide-narrative" class="sr-narration-block">
+          <div class="shortcuts-grid">
+            <div class="shortcut-item">
+              <kbd class="key-cap">Alt</kbd> + <kbd class="key-cap">A</kbd>
+              <span class="shortcut-desc">Open / Close Accessibility Preferences Modal</span>
+            </div>
+            <div class="shortcut-item">
+              <kbd class="key-cap">Alt</kbd> + <kbd class="key-cap">R</kbd>
+              <span class="shortcut-desc">Toggle Interactive Reading Ruler</span>
+            </div>
+            <div class="shortcut-item">
+              <kbd class="key-cap">Alt</kbd> + <kbd class="key-cap">S</kbd>
+              <span class="shortcut-desc">Play / Pause Spoken Audio Narrator</span>
+            </div>
+            <div class="shortcut-item">
+              <kbd class="key-cap">Esc</kbd>
+              <span class="shortcut-desc">Dismiss Reading Ruler or Close Dialogs</span>
+            </div>
+            <div class="shortcut-item">
+              <kbd class="key-cap">Tab</kbd> / <kbd class="key-cap">Shift+Tab</kbd>
+              <span class="shortcut-desc">Navigate forward / backward through focusable items</span>
+            </div>
+            <div class="shortcut-item">
+              <kbd class="key-cap">Space</kbd> / <kbd class="key-cap">Enter</kbd>
+              <span class="shortcut-desc">Activate buttons, toggle checkboxes, or expand accordions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Full Accessibility Modal Dialog -->
+  <div id="a11y-modal-backdrop" class="modal-backdrop" style="display: none;" aria-hidden="true">
+    <div id="a11y-modal" class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h2 id="modal-title" class="modal-title">
+          <span aria-hidden="true">🛠️</span> Comprehensive Accessibility Suite
+        </h2>
+        <button type="button" class="btn-close-modal" id="btn-close-a11y-modal" aria-label="Close accessibility settings modal">
+          <span aria-hidden="true">✕</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <fieldset class="modal-fieldset">
+          <legend class="modal-legend">Visual Appearance &amp; Contrast</legend>
+          <div class="setting-row">
+            <label for="modal-theme-select">Color Theme:</label>
+            <select id="modal-theme-select" class="a11y-select modal-select">
+              <option value="jade">Jade &amp; Porcelain (Calm Light)</option>
+              <option value="midnight">Midnight Focus (Dark)</option>
+              <option value="high-contrast">High Contrast Monochrome (WCAG AAA)</option>
+              <option value="sepia">Calm Sepia (Scotopic / Dyslexia Warmth)</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <label for="modal-font-select">Typography:</label>
+            <select id="modal-font-select" class="a11y-select modal-select">
+              <option value="standard">Atkinson Hyperlegible (Braille Institute)</option>
+              <option value="dyslexia">Lexend (Dyslexia-Optimized Saccadic Pacing)</option>
+              <option value="system">System Default Clean Sans</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <fieldset class="modal-fieldset">
+          <legend class="modal-legend">Text Sizing &amp; Line Spacing</legend>
+          <div class="setting-row">
+            <label for="modal-size-select">Font Scale:</label>
+            <select id="modal-size-select" class="a11y-select modal-select">
+              <option value="small">Small (90%)</option>
+              <option value="normal" selected>Normal (100%)</option>
+              <option value="large">Large (115%)</option>
+              <option value="xlarge">Extra Large (130%)</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <label for="modal-spacing-select">Line &amp; Word Spacing:</label>
+            <select id="modal-spacing-select" class="a11y-select modal-select">
+              <option value="normal" selected>Standard Spacing (1.6 line height)</option>
+              <option value="expanded">Expanded Spacing (1.95 line height + letter spacing)</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <fieldset class="modal-fieldset">
+          <legend class="modal-legend">Reading Aids &amp; Motion</legend>
+          <div class="setting-row toggle-row">
+            <label for="modal-ruler-toggle">Reading Ruler (line-tracking guide):</label>
+            <input type="checkbox" id="modal-ruler-toggle" class="a11y-checkbox">
+          </div>
+          <div class="setting-row toggle-row">
+            <label for="modal-motion-toggle">Disable All Animations (Reduced Motion):</label>
+            <input type="checkbox" id="modal-motion-toggle" class="a11y-checkbox">
+          </div>
+        </fieldset>
+
+        <fieldset class="modal-fieldset">
+          <legend class="modal-legend">Sound &amp; Speech</legend>
+          <div class="setting-row">
+            <label for="modal-speech-speed">Speech Reading Speed:</label>
+            <select id="modal-speech-speed" class="a11y-select modal-select">
+              <option value="0.8">0.8× (Slower, relaxed pacing)</option>
+              <option value="1.0" selected>1.0× (Normal natural pace)</option>
+              <option value="1.2">1.2× (Brisk)</option>
+              <option value="1.5">1.5× (Fast)</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <label for="modal-soundscape-select">Focus Soundscape:</label>
+            <select id="modal-soundscape-select" class="a11y-select modal-select">
+              <option value="off" selected>Off (Mute)</option>
+              <option value="pink">Pink Noise (distraction dampening)</option>
+              <option value="rain">Gentle Rain (steady rhythm)</option>
+              <option value="drone">Zen Harmonic Drone</option>
+            </select>
+          </div>
+        </fieldset>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-reset-a11y-all">Reset All Settings</button>
+        <button type="button" class="btn btn-primary" id="btn-save-a11y-modal">Apply &amp; Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Lightbox Modal for Screenshots -->
+  <div id="lightbox-modal" class="lightbox-backdrop" style="display: none;" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Enlarged Screenshot View">
+    <div class="lightbox-dialog">
+      <button type="button" class="lightbox-close" id="btn-close-lightbox" aria-label="Close enlarged image view">✕</button>
+      <div class="lightbox-figure">
+        <img id="lightbox-img" src="" alt="" class="lightbox-image">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-content">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-row">
+            <img src="assets/images/logo.png" alt="MindEase Emblem" width="36" height="36" class="footer-logo">
+            <span class="footer-title">MindEase</span>
+          </div>
+          <p class="footer-tagline">
+            The AI Learning Layer That Adapts To Every Brain. Developed for GCD4F 2026 by <strong>The Architects</strong>, École Nationale Supérieure d’Ingénieurs de Tunis (ENSIT).
+          </p>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-heading">Poster Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#overview">Overview &amp; Highlights</a></li>
+            <li><a href="#the-problem">The Four Cognitive Barriers</a></li>
+            <li><a href="#architecture">Three-Layer Architecture</a></li>
+            <li><a href="#interactive-simulator">Interactive Simulator</a></li>
+            <li><a href="#interface-gallery">Prototype Gallery</a></li>
+            <li><a href="#video-showcase">Video Studio Demos</a></li>
+            <li><a href="#verification">Evidence &amp; Audit</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-heading">Open Source &amp; Research</h4>
+          <ul class="footer-links">
+            <li><a href="https://github.com/Taha2053/MindEase" target="_blank" rel="noopener noreferrer">MindEase Extension Repo</a></li>
+            <li><a href="https://github.com/Taha2053/website-poster-ai" target="_blank" rel="noopener noreferrer">Poster Website Source</a></li>
+            <li><a href="https://sdgs.un.org/goals/goal4" target="_blank" rel="noopener noreferrer">UN SDG 4: Quality Education</a></li>
+            <li><a href="#keyboard-guide">Keyboard Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; 2026 The Architects, ENSIT. Built with strict non-destructive ethics and universal accessibility for neurodiverse learners. Released under the MIT License.
+        </p>
+        <div class="footer-badges">
+          <span class="badge-wcag">WCAG 2.2 AAA Target</span>
+          <span class="badge-privacy">100% Local-First Storage</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
