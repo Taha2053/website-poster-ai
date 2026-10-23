@@ -33,7 +33,6 @@
   <nav class="skip-links" aria-label="Skip links">
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <a href="#accessibility-controls" class="skip-link">Skip to accessibility suite</a>
-    <a href="#interactive-simulator" class="skip-link">Skip to interactive demo</a>
     <a href="#video-showcase" class="skip-link">Skip to video demonstrations</a>
   </nav>
 
@@ -152,7 +151,6 @@
           <li><a href="#overview">Overview</a></li>
           <li><a href="#the-problem">The Friction</a></li>
           <li><a href="#architecture">Architecture</a></li>
-          <li><a href="#interactive-simulator">Live Simulator</a></li>
           <li><a href="#interface-gallery">Prototype Tour</a></li>
           <li><a href="#video-showcase">Video Studio</a></li>
           <li><a href="#verification">Evidence</a></li>
@@ -213,11 +211,7 @@
               <span class="btn-icon" aria-hidden="true">▶️</span>
               <span>Listen to Poster Audio Guide</span>
             </button>
-            <a href="#interactive-simulator" class="btn btn-secondary">
-              <span class="btn-icon" aria-hidden="true">⚡</span>
-              <span>Try Live Simulator</span>
-            </a>
-            <a href="#video-showcase" class="btn btn-tertiary">
+            <a href="#video-showcase" class="btn btn-secondary">
               <span class="btn-icon" aria-hidden="true">🎬</span>
               <span>Watch Video Studio</span>
             </a>
@@ -454,210 +448,6 @@
       </div>
     </section>
 
-    <!-- Interactive Simulator / Live Before & After Demo -->
-    <section id="interactive-simulator" class="section demo-section" aria-labelledby="simulator-title">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-tag-row">
-            <span class="section-tag">Interactive Experience</span>
-            <button type="button" class="btn-listen-section" data-read-target="#simulator-narrative" aria-label="Listen to Live Simulator instructions">
-              <span aria-hidden="true">🔊</span> Listen
-            </button>
-          </div>
-          <h2 id="simulator-title" class="section-title">Experience MindEase: Live Adaptation Simulator</h2>
-          <p class="section-subtitle">
-            Toggle between the unadapted, dense academic format and MindEase’s real-time cognitive transformation. Experiment with different learner profiles to see how the layout reshapes itself to protect working memory.
-          </p>
-        </div>
-
-        <div id="simulator-narrative" class="sr-only">
-          Interactive simulator showing an academic paragraph on Artificial Intelligence and State Space Search. You can toggle between Standard Raw Academic View and MindEase Transformed View, and switch between ADHD, Dyslexia, and Multilingual learner presets.
-        </div>
-
-        <div class="simulator-wrapper" role="region" aria-label="Interactive Content Transformation Simulator">
-          <!-- Simulator Controls -->
-          <div class="simulator-toolbar" role="toolbar" aria-label="Simulator Controls">
-            <div class="sim-control-group">
-              <span class="sim-label">Mode:</span>
-              <div class="btn-toggle-pair" role="radiogroup" aria-label="Adaptation View Mode">
-                <button type="button" class="sim-btn sim-view-btn" id="btn-mode-raw" role="radio" aria-checked="false">
-                  Standard Raw View
-                </button>
-                <button type="button" class="sim-btn sim-view-btn active" id="btn-mode-adapted" role="radio" aria-checked="true">
-                  MindEase Transformed View
-                </button>
-              </div>
-            </div>
-
-            <div class="sim-control-group" id="sim-profile-group">
-              <label for="sim-profile-select" class="sim-label">Learner Profile:</label>
-              <select id="sim-profile-select" class="a11y-select">
-                <option value="adhd" selected>ADHD Preset (Chunked + Anchors)</option>
-                <option value="dyslexia">Dyslexia Preset (Spaced + Lexend)</option>
-                <option value="esl">Multilingual Preset (Tooltips + Simplified)</option>
-              </select>
-            </div>
-
-            <div class="sim-control-group" id="sim-features-group">
-              <button type="button" class="sim-feature-btn active" id="toggle-chunking" aria-pressed="true">
-                <span>Chunking</span>
-              </button>
-              <button type="button" class="sim-feature-btn active" id="toggle-definitions" aria-pressed="true">
-                <span>Definitions</span>
-              </button>
-              <button type="button" class="sim-feature-btn active" id="toggle-math" aria-pressed="true">
-                <span>Math Typesetting</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Simulator Content Display -->
-          <div class="simulator-stage" id="simulator-stage">
-            <!-- Raw Academic View -->
-            <div class="sim-view raw-view" id="sim-raw-view" style="display: none;">
-              <div class="raw-document-header">
-                <span class="doc-journal">Journal of Artificial Intelligence Research (Vol. 42)</span>
-                <h3 class="raw-title">Combinatorial Search and Heuristic Optimization in State-Space Exploration</h3>
-                <span class="doc-authors">A. Mercer, K. Vance, et al. • Published 2026</span>
-              </div>
-              <div class="raw-text-body">
-                <p>
-                  Artificial intelligence problem solving in discrete domains fundamentally relies on state-space search architectures where the totality of achievable configurations is formally represented as a directed graph G = (V, E). When traversing combinatorial structures, naive exhaustive search incurs an exponential complexity penalty governed by O(b^d), where b represents the branching factor of the search graph and d signifies the minimal depth of the optimal goal state. In non-trivial decision domains such as automated theorem proving or game-tree evaluations, the combinatorial explosion renders blind traversal computationally intractable within standard computational horizons. Consequently, heuristic functions h(n) estimating the cost from candidate node n to the nearest goal state are introduced to prune suboptimal trajectories, transforming unguided exploration into an admissible A* search formulation whose temporal efficiency is strictly bounded by the informational quality and monotonicity of the employed heuristic estimator.
-                </p>
-                <p>
-                  Furthermore, when transitions incorporate stochastic environmental dynamics, the representation generalizes to a Markov Decision Process defined by the 5-tuple (S, A, P, R, \gamma). Here, the optimal state-value policy V*(s) satisfies the recursive Bellman optimality equation: V*(s) = \max_{a \in A} \sum_{s' \in S} P(s' | s, a) [ R(s, a, s') + \gamma V*(s') ], requiring continuous convergence over iterative dynamic programming sweeps.
-                </p>
-              </div>
-              <div class="raw-friction-alert" role="status">
-                <span class="alert-icon" aria-hidden="true">⚠️</span>
-                <span><strong>Friction Analysis:</strong> 2 dense paragraphs, 290 words, 0 visual breaks, 2 unrendered raw LaTeX equations, 6 dense domain-specific terms without definitions. High cognitive drop-off risk.</span>
-              </div>
-            </div>
-
-            <!-- MindEase Transformed View -->
-            <div class="sim-view adapted-view active" id="sim-adapted-view">
-              <div class="adapted-banner">
-                <div class="adapted-banner-left">
-                  <span class="mindease-logo-mini" aria-hidden="true">✨</span>
-                  <span>MindEase Active Transformation • Section 1 of 2</span>
-                </div>
-                <div class="adapted-banner-right">
-                  <button type="button" class="btn-listen-chunk" id="btn-listen-sim-chunk" aria-label="Listen to this transformed chunk">
-                    <span aria-hidden="true">🔊</span> Read Aloud
-                  </button>
-                  <button type="button" class="btn-show-source" id="btn-toggle-source-inline" aria-expanded="false">
-                    View Original Source Section
-                  </button>
-                </div>
-              </div>
-
-              <!-- Collapsible Original Source Section (Source-Preserving Contract) -->
-              <div class="inline-source-drawer" id="inline-source-drawer" style="display: none;" aria-hidden="true">
-                <div class="source-drawer-header">
-                  <strong>Original Preserved Source (Immutable):</strong>
-                </div>
-                <p class="source-drawer-text">
-                  Artificial intelligence problem solving in discrete domains fundamentally relies on state-space search architectures where the totality of achievable configurations is formally represented as a directed graph G = (V, E)...
-                </p>
-              </div>
-
-              <!-- Transformed Chunks -->
-              <div class="chunk-container">
-                <!-- Chunk 1 -->
-                <article class="mindease-chunk" id="chunk-1">
-                  <div class="chunk-header">
-                    <span class="chunk-index">Chunk 1: The Core Dilemma</span>
-                    <span class="concept-anchor" title="Anchored Concept">[CONCEPT: Combinatorial Explosion]</span>
-                  </div>
-                  <div class="chunk-content">
-                    <p>
-                      In AI, exploring solutions means searching through a network of possible configurations called a
-                      <button type="button" class="def-tooltip-trigger" data-term="State-Space" data-def="A model of all possible states or moves in a problem, like every board position in chess." aria-describedby="def-state-space">
-                        <strong>state-space</strong>
-                        <span class="def-bubble" id="def-state-space" role="tooltip">A model of all possible states or moves in a problem, like every board position in chess.</span>
-                      </button>.
-                    </p>
-                    <p>
-                      If an algorithm searches every branch blindly, the computational workload multiplies exponentially:
-                    </p>
-                    <div class="katex-formula-block" role="region" aria-label="Search complexity formula: Big O of b to the power of d">
-                      <span class="sr-only">Mathematical Formula: Big-O notation of b raised to the power of d, where b represents the branching factor of the search tree and d represents the search depth to the goal.</span>
-                      <span class="math-rendered" data-math="\mathcal{O}(b^d)" aria-hidden="true">$\mathcal{O}(b^d)$</span>
-                      <span class="math-explanation">Where $b$ = choices per step (branching factor), $d$ = steps to reach the goal (depth).</span>
-                    </div>
-                    <div class="chunk-takeaway">
-                      <span class="takeaway-badge">Key Takeaway</span>
-                      <span>Without a guide, even simple problems generate billions of dead-ends faster than any computer can evaluate.</span>
-                    </div>
-                  </div>
-                </article>
-
-                <!-- Chunk 2 -->
-                <article class="mindease-chunk" id="chunk-2">
-                  <div class="chunk-header">
-                    <span class="chunk-index">Chunk 2: The Solution</span>
-                    <span class="concept-anchor" title="Anchored Concept">[CONCEPT: Heuristic Guidance]</span>
-                  </div>
-                  <div class="chunk-content">
-                    <p>
-                      To prevent exponential overload, AI uses an intelligent shortcut called a
-                      <button type="button" class="def-tooltip-trigger" data-term="Heuristic" data-def="An educated rule-of-thumb or estimate that guides search toward the goal without exploring every path." aria-describedby="def-heuristic">
-                        <strong>heuristic function $h(n)$</strong>
-                        <span class="def-bubble" id="def-heuristic" role="tooltip">An educated rule-of-thumb or estimate that guides search toward the goal without exploring every path.</span>
-                      </button>.
-                    </p>
-                    <p>
-                      Instead of checking every move, the heuristic ranks which paths look most promising, pruning away dead ends.
-                    </p>
-                    <div class="diagram-anchor-box">
-                      <div class="diagram-header">
-                        <span class="diagram-icon" aria-hidden="true">📊</span>
-                        <span>Napkin AI Generated Concept Diagram</span>
-                      </div>
-                      <div class="diagram-illustration">
-                        <svg class="tree-svg" viewBox="0 0 400 120" role="img" aria-labelledby="tree-svg-title tree-svg-desc">
-                          <title id="tree-svg-title">Heuristic Search Tree Pruning Diagram</title>
-                          <desc id="tree-svg-desc">Visual tree graph showing an initial start node branching into three paths. The left and right paths have unfavorable heuristic scores and are marked pruned with red crosses. The central path with heuristic score h(n)=2 is highlighted in green and leads directly to the Goal State.</desc>
-                          <circle cx="200" cy="20" r="14" class="node-root" fill="var(--color-accent)" />
-                          <text x="200" y="24" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold">Start</text>
-                          <!-- Left branch -->
-                          <line x1="190" y1="32" x2="100" y2="70" stroke="var(--color-border)" stroke-width="2" />
-                          <circle cx="100" cy="75" r="12" class="node-pruned" fill="var(--color-surface-sunken)" stroke="var(--color-error)" stroke-width="2" />
-                          <text x="100" y="79" text-anchor="middle" fill="var(--color-error)" font-size="9">Pruned ✕</text>
-                          <!-- Middle branch -->
-                          <line x1="200" y1="34" x2="200" y2="70" stroke="var(--color-accent)" stroke-width="2" />
-                          <circle cx="200" cy="75" r="14" class="node-promising" fill="var(--color-accent-light)" stroke="var(--color-accent)" stroke-width="2" />
-                          <text x="200" y="79" text-anchor="middle" fill="var(--color-accent-dark)" font-size="9" font-weight="bold">h(n)=2 ✓</text>
-                          <!-- Right branch -->
-                          <line x1="210" y1="32" x2="300" y2="70" stroke="var(--color-border)" stroke-width="2" />
-                          <circle cx="300" cy="75" r="12" class="node-pruned" fill="var(--color-surface-sunken)" stroke="var(--color-error)" stroke-width="2" />
-                          <text x="300" y="79" text-anchor="middle" fill="var(--color-error)" font-size="9">Pruned ✕</text>
-                          <!-- Goal -->
-                          <line x1="200" y1="89" x2="200" y2="105" stroke="var(--color-accent)" stroke-width="2" stroke-dasharray="3,3" />
-                          <rect x="175" y="105" width="50" height="15" rx="3" fill="var(--color-accent)" />
-                          <text x="200" y="116" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="bold">Goal State</text>
-                        </svg>
-                        <div class="sr-only" id="tree-text-alt">
-                          Text Alternative for Tree Diagram: From the Start root node, three branches diverge. The left and right paths fail admissibility and are pruned. The center path evaluates to h(n)=2 and proceeds directly to Goal State.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
-
-              <!-- MindEase Feedback Bar -->
-              <div class="mindease-feedback-bar">
-                <span class="feedback-label">Was this chunk clear?</span>
-                <button type="button" class="btn-fb" aria-label="Yes, this was clear">👍 Clear</button>
-                <button type="button" class="btn-fb" aria-label="Partly clear">🤔 Partly</button>
-                <button type="button" class="btn-fb" aria-label="Needs simpler explanation">🔄 Simpler</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Visual Prototype Tour & Screenshots Section -->
     <section id="interface-gallery" class="section gallery-section" aria-labelledby="gallery-title">
@@ -1239,7 +1029,6 @@
             <li><a href="#overview">Overview &amp; Highlights</a></li>
             <li><a href="#the-problem">The Four Cognitive Barriers</a></li>
             <li><a href="#architecture">Three-Layer Architecture</a></li>
-            <li><a href="#interactive-simulator">Interactive Simulator</a></li>
             <li><a href="#interface-gallery">Prototype Gallery</a></li>
             <li><a href="#video-showcase">Video Studio Demos</a></li>
             <li><a href="#verification">Evidence &amp; Audit</a></li>

@@ -302,17 +302,6 @@
       });
     });
 
-    // Sim chunk listen button
-    const simChunkBtn = document.getElementById('btn-listen-sim-chunk');
-    if (simChunkBtn) {
-      simChunkBtn.addEventListener('click', () => {
-        const chunkStage = document.getElementById('sim-adapted-view');
-        if (chunkStage) {
-          stopSpeech();
-          speakElement(chunkStage, simChunkBtn);
-        }
-      });
-    }
   }
 
   function stopSpeech() {
@@ -617,106 +606,6 @@
     }
     if (label) label.textContent = 'Focus Sound';
     announce('Focus soundscape muted.');
-  }
-
-  // --- Interactive Simulator Logic ---
-  function initSimulator() {
-    const btnRaw = document.getElementById('btn-mode-raw');
-    const btnAdapted = document.getElementById('btn-mode-adapted');
-    const rawView = document.getElementById('sim-raw-view');
-    const adaptedView = document.getElementById('sim-adapted-view');
-    const profileSelect = document.getElementById('sim-profile-select');
-    const toggleSourceInline = document.getElementById('btn-toggle-source-inline');
-    const inlineDrawer = document.getElementById('inline-source-drawer');
-
-    // Feature Toggles
-    const toggleChunking = document.getElementById('toggle-chunking');
-    const toggleDefinitions = document.getElementById('toggle-definitions');
-    const toggleMath = document.getElementById('toggle-math');
-
-    if (btnRaw && btnAdapted && rawView && adaptedView) {
-      btnRaw.addEventListener('click', () => {
-        btnRaw.classList.add('active');
-        btnRaw.setAttribute('aria-checked', 'true');
-        btnAdapted.classList.remove('active');
-        btnAdapted.setAttribute('aria-checked', 'false');
-        rawView.style.display = 'block';
-        adaptedView.style.display = 'none';
-        announce('Switched to Standard Raw Academic View.');
-      });
-
-      btnAdapted.addEventListener('click', () => {
-        btnAdapted.classList.add('active');
-        btnAdapted.setAttribute('aria-checked', 'true');
-        btnRaw.classList.remove('active');
-        btnRaw.setAttribute('aria-checked', 'false');
-        rawView.style.display = 'none';
-        adaptedView.style.display = 'block';
-        announce('Switched to MindEase Transformed View.');
-      });
-    }
-
-    if (toggleSourceInline && inlineDrawer) {
-      toggleSourceInline.addEventListener('click', () => {
-        const isExpanded = toggleSourceInline.getAttribute('aria-expanded') === 'true';
-        toggleSourceInline.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
-        inlineDrawer.style.display = !isExpanded ? 'block' : 'none';
-        inlineDrawer.setAttribute('aria-hidden', !isExpanded ? 'false' : 'true');
-        announce(!isExpanded ? 'Original immutable source text revealed.' : 'Original source text collapsed.');
-      });
-    }
-
-    if (profileSelect) {
-      profileSelect.addEventListener('change', (e) => {
-        const profile = e.target.value;
-        const chunks = document.querySelectorAll('.mindease-chunk');
-        if (profile === 'adhd') {
-          chunks.forEach(c => c.style.lineHeight = '1.6');
-          document.querySelectorAll('.chunk-takeaway').forEach(t => t.style.display = 'flex');
-          announce('Applied ADHD Preset: Concise chunks with visual concept anchors.');
-        } else if (profile === 'dyslexia') {
-          chunks.forEach(c => c.style.lineHeight = '1.95');
-          document.querySelectorAll('.chunk-takeaway').forEach(t => t.style.display = 'flex');
-          announce('Applied Dyslexia Preset: Expanded line spacing and emphasized definitions.');
-        } else if (profile === 'esl') {
-          chunks.forEach(c => c.style.lineHeight = '1.7');
-          announce('Applied Multilingual Preset: Enhanced vocabulary tooltips.');
-        }
-      });
-    }
-
-    if (toggleChunking) {
-      toggleChunking.addEventListener('click', () => {
-        const active = toggleChunking.classList.toggle('active');
-        toggleChunking.setAttribute('aria-pressed', active ? 'true' : 'false');
-        document.querySelectorAll('.mindease-chunk').forEach(c => {
-          c.style.borderLeftWidth = active ? '5px' : '1px';
-        });
-        announce(active ? 'Chunking guides enabled' : 'Chunking guides minimized');
-      });
-    }
-
-    if (toggleDefinitions) {
-      toggleDefinitions.addEventListener('click', () => {
-        const active = toggleDefinitions.classList.toggle('active');
-        toggleDefinitions.setAttribute('aria-pressed', active ? 'true' : 'false');
-        document.querySelectorAll('.def-tooltip-trigger').forEach(d => {
-          d.style.borderBottomStyle = active ? 'dashed' : 'none';
-        });
-        announce(active ? 'Interactive definitions visible' : 'Interactive definitions hidden');
-      });
-    }
-
-    if (toggleMath) {
-      toggleMath.addEventListener('click', () => {
-        const active = toggleMath.classList.toggle('active');
-        toggleMath.setAttribute('aria-pressed', active ? 'true' : 'false');
-        document.querySelectorAll('.katex-formula-block').forEach(m => {
-          m.style.display = active ? 'block' : 'none';
-        });
-        announce(active ? 'Math typesetting enabled' : 'Math typesetting hidden');
-      });
-    }
   }
 
   // --- Video Studio Tabs & Controller ---
@@ -1113,7 +1002,6 @@
     initToolbarButtons();
     initSpeechEngine();
     initSoundscape();
-    initSimulator();
     initVideoPlayer();
     initLightbox();
     initA11yModal();
