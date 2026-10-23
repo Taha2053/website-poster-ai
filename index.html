@@ -161,10 +161,11 @@
 
       <div class="header-actions">
         <span class="competition-tag" title="Global Challenge for Design for Futures 2026">GCD4F 2026</span>
+        <button type="button" class="btn-qr-trigger" id="btn-open-qr-modal" aria-haspopup="dialog" aria-expanded="false" title="View & Download Poster Exhibition QR Code">
+          <span aria-hidden="true">📱</span>
+          <span>Poster QR</span>
+        </button>
         <a href="https://github.com/Taha2053/MindEase" target="_blank" rel="noopener noreferrer" class="btn-git" title="View Source on GitHub (opens in new tab)">
-          <svg class="git-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          <span>Repository</span>
-        </a>
       </div>
     </div>
   </header>
@@ -1183,6 +1184,37 @@
       <div class="lightbox-figure">
         <img id="lightbox-img" src="" alt="" class="lightbox-image">
         <div id="lightbox-caption" class="lightbox-caption"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Poster QR Code Modal Dialog -->
+  <div id="qr-modal-backdrop" class="modal-backdrop" style="display: none;" aria-hidden="true">
+    <div id="qr-modal" class="modal-dialog qr-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
+      <div class="modal-header">
+        <h2 id="qr-modal-title" class="modal-title">
+          <span aria-hidden="true">📱</span> Exhibition Poster QR Code
+        </h2>
+        <button type="button" class="btn-close-modal" id="btn-close-qr-modal" aria-label="Close QR code modal">
+          <span aria-hidden="true">✕</span>
+        </button>
+      </div>
+      <div class="modal-body qr-modal-body">
+        <div class="qr-preview-box">
+          <img src="assets/images/qr-code.svg" alt="Exhibition Poster QR Code pointing to https://website-poster-ai.vercel.app/#overview" class="qr-code-img" width="220" height="220">
+          <span class="qr-url-text">https://website-poster-ai.vercel.app/#overview</span>
+        </div>
+        <p class="qr-explanation">
+          Scan this code with any smartphone camera to launch the interactive exhibition, or download the vector SVG or high-resolution PNG for printing directly on the GCD4F 2026 poster.
+        </p>
+        <div class="qr-download-row">
+          <a href="assets/images/qr-code.svg" download="mindease-poster-qr.svg" class="btn btn-primary" title="Download infinite-resolution vector SVG for poster print">
+            <span aria-hidden="true">⬇️</span> Download SVG (Vector)
+          </a>
+          <a href="assets/images/qr-code.png" download="mindease-poster-qr.png" class="btn btn-secondary" title="Download high-resolution 1000px PNG">
+            <span aria-hidden="true">🖼️</span> Download PNG (1000px)
+          </a>
+        </div>
       </div>
     </div>
   </div>

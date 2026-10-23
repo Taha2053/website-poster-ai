@@ -828,6 +828,41 @@
     }
   }
 
+  // --- Poster QR Code Modal Dialog ---
+  function initQrModal() {
+    const btnOpen = document.getElementById('btn-open-qr-modal');
+    const modalBackdrop = document.getElementById('qr-modal-backdrop');
+    const btnClose = document.getElementById('btn-close-qr-modal');
+
+    function openModal() {
+      if (!modalBackdrop) return;
+      modalBackdrop.style.display = 'flex';
+      modalBackdrop.setAttribute('aria-hidden', 'false');
+      if (btnOpen) btnOpen.setAttribute('aria-expanded', 'true');
+      if (btnClose) btnClose.focus();
+      announce('Poster QR Code dialog opened.');
+    }
+
+    function closeModal() {
+      if (!modalBackdrop) return;
+      modalBackdrop.style.display = 'none';
+      modalBackdrop.setAttribute('aria-hidden', 'true');
+      if (btnOpen) {
+        btnOpen.setAttribute('aria-expanded', 'false');
+        btnOpen.focus();
+      }
+      announce('Poster QR Code dialog closed.');
+    }
+
+    if (btnOpen) btnOpen.addEventListener('click', openModal);
+    if (btnClose) btnClose.addEventListener('click', closeModal);
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) closeModal();
+      });
+    }
+  }
+
   // --- Accessibility Settings Modal Dialog ---
   function initA11yModal() {
     const btnOpen = document.getElementById('btn-open-a11y-modal');
@@ -945,6 +980,12 @@
       if (lightboxModal && lightboxModal.style.display !== 'none') {
         lightboxModal.style.display = 'none';
         lightboxModal.setAttribute('aria-hidden', 'true');
+        return;
+      }
+      const qrBackdrop = document.getElementById('qr-modal-backdrop');
+      if (qrBackdrop && qrBackdrop.style.display !== 'none') {
+        qrBackdrop.style.display = 'none';
+        qrBackdrop.setAttribute('aria-hidden', 'true');
         return;
       }
       if (state.rulerActive) {
@@ -1076,6 +1117,7 @@
     initVideoPlayer();
     initLightbox();
     initA11yModal();
+    initQrModal();
 
     // KaTeX render after brief delay
     setTimeout(renderFormulas, 400);
